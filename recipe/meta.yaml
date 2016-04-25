@@ -17,12 +17,12 @@ requirements:
     - pip
     - zlib 1.2*
     - libtiff 4*
-    - jpeg 8*
+    - jpeg 9*
     - freetype 2.5*
     - tk
   run:
     - python
-    - jpeg 8*
+    - jpeg 9*
     - zlib 1.2*
     - freetype 2.5*
     - libtiff 4*
