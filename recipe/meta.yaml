@@ -8,7 +8,7 @@ source:
   sha256: eb4b9c2956e38f89d588a0d0af0e27a03f1e1d2be705a828bbd12cfba0b020fa
 
 build:
-  number: 0 
+  number: 1
   script: pip install --no-deps .
 
 requirements:
@@ -16,16 +16,16 @@ requirements:
     - python
     - pip
     - zlib 1.2*
-    - libtiff 4*
-    - jpeg 8*
+    - libtiff 4.0.6
+    - jpeg 9*
     - freetype 2.5*
     - tk
   run:
     - python
-    - jpeg 8*
+    - jpeg 9*
     - zlib 1.2*
     - freetype 2.5*
-    - libtiff 4*
+    - libtiff 4.0.6
 
 test:
   imports:
