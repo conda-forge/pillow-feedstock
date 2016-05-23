@@ -14,11 +14,12 @@ source:
     #
     # https://github.com/python-pillow/Pillow/pull/1883
     #
-    - pillow_PR_1883.diff
+    - pillow_PR_1883.diff  # [osx]
 
 build:
   number: 2
-  script: python setup.py build_ext --disable-osx-tcltk-framework install --single-version-externally-managed --record=record.txt
+  script: python setup.py build_ext --disable-osx-tcltk-framework install --single-version-externally-managed --record=record.txt  # [osx]
+  script: python setup.py build_ext install --single-version-externally-managed --record=record.txt                                # [not osx]
 
 requirements:
   build:
