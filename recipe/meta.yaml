@@ -23,6 +23,7 @@ build:
 requirements:
   build:
     - python
+    - setuptools 20.7.0  # [win and py35]
     - pip
     - zlib 1.2*
     - libtiff 4.0.6
