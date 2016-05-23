@@ -18,7 +18,7 @@ source:
 
 build:
   number: 2
-  script: python setup.py build_ext --debug --disable-osx-tcltk-framework install --single-version-externally-managed --record=record.txt
+  script: python setup.py build_ext --disable-osx-tcltk-framework install --single-version-externally-managed --record=record.txt
 
 requirements:
   build:
