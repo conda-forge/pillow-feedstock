@@ -1,4 +1,4 @@
-{% set version = "3.2.0" %}
+{% set version = "3.3.0" %}
 
 package:
   name: pillow
@@ -7,33 +7,27 @@ package:
 source:
   fn: Pillow-{{ version }}.tar.gz
   url: https://github.com/python-pillow/Pillow/archive/{{ version }}.tar.gz
-  sha256: eb4b9c2956e38f89d588a0d0af0e27a03f1e1d2be705a828bbd12cfba0b020fa
-  patches:
-    # Apply the diff from a Pillow PR to add the `--disable-osx-tcltk-framework`
-    # flag. Link below.
-    #
-    # https://github.com/python-pillow/Pillow/pull/1883
-    #
-    - pillow_PR_1883.diff
+  sha256: ae2fbb500c81100f7e374545d008019e6f90918386f620625c3b3b98faf88414
 
 build:
-  number: 2
-  script: python setup.py build_ext --disable-osx-tcltk-framework install --single-version-externally-managed --record=record.txt
+  number: 0
+  script: python setup.py build_ext install --single-version-externally-managed --record=record.txt
 
 requirements:
   build:
     - python
+    - setuptools
     - pip
-    - zlib 1.2*
+    - zlib 1.2.*
     - libtiff 4.0.6
     - jpeg 9*
-    - freetype 2.6*
+    - freetype 2.6.*
     - tk
   run:
     - python
     - jpeg 9*
-    - zlib 1.2*
-    - freetype 2.6*
+    - zlib 1.2.*
+    - freetype 2.6.*
     - libtiff 4.0.6
 
 test:
