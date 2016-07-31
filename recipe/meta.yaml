@@ -17,24 +17,24 @@ source:
     - pillow_PR_1883.diff
 
 build:
-  number: 2
+  number: 3
   script: python setup.py build_ext --disable-osx-tcltk-framework install --single-version-externally-managed --record=record.txt
 
 requirements:
   build:
     - python
     - pip
-    - zlib 1.2*
-    - libtiff 4.0.6
+    - zlib 1.2.*
+    - libtiff 4.0.*
     - jpeg 9*
-    - freetype 2.6*
-    - tk
+    - freetype 2.6.*
+    - tk 8.5.*
   run:
     - python
     - jpeg 9*
-    - zlib 1.2*
-    - freetype 2.6*
-    - libtiff 4.0.6
+    - zlib 1.2.*
+    - freetype 2.6.*
+    - libtiff 4.0.*
 
 test:
   imports:
