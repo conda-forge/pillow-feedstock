@@ -10,7 +10,7 @@ source:
   sha256: ae2fbb500c81100f7e374545d008019e6f90918386f620625c3b3b98faf88414
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
@@ -18,12 +18,12 @@ requirements:
     - setuptools
     - zlib 1.2.*
     - libtiff 4.0.*
-    - jpeg 9*
+    - jpeg 15*
     - freetype 2.6.*
     - tk 8.5.*
   run:
     - python
-    - jpeg 9*
+    - jpeg 15*
     - zlib 1.2.*
     - freetype 2.6.*
     - libtiff 4.0.*
