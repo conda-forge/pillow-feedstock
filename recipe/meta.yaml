@@ -32,8 +32,8 @@ test:
   imports:
     - PIL
     - PIL.Image
-  commands:
-    - conda inspect linkages -n _test pillow  # [not win]
+  #commands:
+    #- conda inspect linkages -n _test pillow  # [not win]
 
 about:
   home: http://python-imaging.github.io/
