@@ -1,4 +1,4 @@
-{% set version = "3.3.1" %}
+{% set version = "3.4.0" %}
 
 package:
   name: pillow
@@ -7,7 +7,7 @@ package:
 source:
   fn: Pillow-{{ version }}.tar.gz
   url: https://github.com/python-pillow/Pillow/archive/{{ version }}.tar.gz
-  sha256: c76258246a157e99e745805098c25ae289bcdca4b56e5cf035daea091970e597
+  sha256: 511d3209d2603dc8ae1b975ef2c1ee825ece5dbe089969cdeef3b96baf1b6355
 
 build:
   number: 0
@@ -33,7 +33,7 @@ test:
     - PIL
     - PIL.Image
   #commands:
-    #- conda inspect linkages -n _test pillow  # [not win]
+    #- conda inspect linkages -p $PREFIX pillow  # [not win]
 
 about:
   home: http://python-imaging.github.io/
