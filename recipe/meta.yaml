@@ -32,13 +32,14 @@ test:
   imports:
     - PIL
     - PIL.Image
-  #commands:
-    #- conda inspect linkages -p $PREFIX pillow  # [not win]
-    #- conda inspect objects -p $PREFIX pillow  # [osx]
+  commands:
+    - conda inspect linkages -p $PREFIX pillow  # [not win]
+    - conda inspect objects -p $PREFIX pillow  # [osx]
 
 about:
   home: http://python-imaging.github.io/
   license: Standard PIL license
+  license_file: LICENSE
   summary: 'Pillow is the friendly PIL fork by Alex Clark and Contributors.'
 
 extra:

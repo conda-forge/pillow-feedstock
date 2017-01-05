@@ -8,10 +8,11 @@ osx_image: beta-xcode6.1
 
 env:
   matrix:
-    
+
     - CONDA_PY=27
     - CONDA_PY=34
     - CONDA_PY=35
+    - CONDA_PY=36
   global:
     # The BINSTAR_TOKEN secure variable. This is defined canonically in conda-forge.yml.
     - secure: "cCqSD6x8dx8IYPAYmdP0APU99/LPPwAa2uoQsALmkK9bJlpdUiDvtyqAEr7Vi0p5nla1nqO2k5HA+gKYMvnR/x6nUE3D9JoUcNBUZjrWS9NeJDZ5wwJse9cBQcQw5rRNkRSETBS4R1EAcFM3BWb8z1h8ZgE6WFmFRsrpMZ0SWRxRX2YricgN7stbrEOEWLN9LK/Ox2jhQzHLw7qY8Y3GRQ/GNgk1rbH6FYbqKHJ8Cz+LwvJDgrOUgYRocMbWyjKB7qNzmyUfNOR1dXv1/6UrO+JTgXpvqCW74v1xntViZ1xjUMrlKBLF4fOf3TW1cN1j6/c9gWs5uDAhHlseq1zzAtx+9l/KUVbLxSbMGto4Iv0rjSG3Q+EPe4/HE7xfIsFbvP7DW7NV5voseNGcRNKzuMxfECiIcXnXO/ZmeKgwf+kJND9HCJLE7ZRgJW5mOlWk/JOISMwnfhH645mj6MLrKzZAjJhI3/4k7nRjy3C4om2awOi+cXgR8RMpTJcwdwaXjU8amBwARcRsb3+vaflBiTgnrTNTfP/Y2R4sx0WgOd9ZZfAAxDFXbshUaA9ZT1APi4RF766W9NP14DzLwXdClKP/yAp7Sf7YWpnLeyxeHT1Kc65TOeYQawADpFKC5zKjqa7TEpTL6GSqUlSKqBqWCgWcKXInMfuFdvqjQvggD3Y="
@@ -25,18 +26,27 @@ before_install:
 
 install:
     - |
-      MINICONDA_URL="http://repo.continuum.io/miniconda"
+      MINICONDA_URL="https://repo.continuum.io/miniconda"
       MINICONDA_FILE="Miniconda3-latest-MacOSX-x86_64.sh"
-      curl -O "${MINICONDA_URL}/${MINICONDA_FILE}"
+      curl -L -O "${MINICONDA_URL}/${MINICONDA_FILE}"
       bash $MINICONDA_FILE -b
 
       source /Users/travis/miniconda3/bin/activate root
+      conda config --remove channels defaults
+      conda config --add channels defaults
       conda config --add channels conda-forge
       conda config --set show_channel_urls true
       conda install --yes --quiet conda-forge-build-setup
       source run_conda_forge_build_setup
 
+      # Install conda-build 2.x to build with a long prefix.
+      conda install --yes --quiet conda-build=2
+      conda info
+
 script:
   - conda build ./recipe
 
   - upload_or_check_non_existence ./recipe conda-forge --channel=main
+
+  # Inspect the prefix lengths of the built packages.
+  - conda inspect prefix-lengths /Users/travis/miniconda3/conda-bld/osx-64/*.tar.bz2
