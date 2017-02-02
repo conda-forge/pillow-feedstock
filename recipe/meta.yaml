@@ -10,7 +10,7 @@ source:
   sha256: ece687f83a78db7ac608aaa9469fc4d5dbc22757c5bc814cee75f457382d26bc
 
 build:
-  number: 1
+  number: 2
 
 requirements:
   build:
@@ -19,13 +19,13 @@ requirements:
     - zlib 1.2.*
     - libtiff 4.0.*
     - jpeg 9*
-    - freetype 2.6.*
+    - freetype 2.7|2.7.*
     - tk 8.5.*
   run:
     - python
     - jpeg 9*
     - zlib 1.2.*
-    - freetype 2.6.*
+    - freetype 2.7|2.7.*
     - libtiff 4.0.*
     - olefile
 
