@@ -1,4 +1,4 @@
-{% set version = "4.0.0" %}
+{% set version = "3.0.0" %}
 
 package:
   name: pillow
@@ -6,11 +6,11 @@ package:
 
 source:
   fn: Pillow-{{ version }}.tar.gz
-  url: https://github.com/python-pillow/Pillow/archive/{{ version }}.tar.gz
-  sha256: ece687f83a78db7ac608aaa9469fc4d5dbc22757c5bc814cee75f457382d26bc
+  url: https://pypi.io/packages/source/P/Pillow/Pillow-{{ version }}.tar.gz
+  sha256: ad50bef540fe5518a4653c3820452a881b6a042cb0f8bb7657c491c6bd3654bb
 
 build:
-  number: 2
+  number: 0
 
 requirements:
   build:
