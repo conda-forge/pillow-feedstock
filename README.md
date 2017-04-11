@@ -3,7 +3,7 @@ About pillow
 
 Home: http://python-imaging.github.io/
 
-Package license: Standard PIL license
+Package license: PIL
 
 Feedstock license: BSD 3-Clause
 
