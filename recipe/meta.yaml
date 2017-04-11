@@ -6,7 +6,7 @@ package:
 
 source:
   fn: Pillow-{{ version }}.tar.gz
-  url: https://github.com/python-pillow/Pillow/archive/{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/P/Pillow/Pillow-{{ version }}.tar.gz
   sha256: a0fd487fed4a35717401b7566e51a1520b34e7c0f7f2a315a6509f82bc86299f
 
 build:
