@@ -8,25 +8,27 @@ source:
   fn: Pillow-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/P/Pillow/Pillow-{{ version }}.tar.gz
   sha256: c724f65870e545316f9e82e4c6d608ab5aa9dd82d5185e5b2e72119378740073
+  patches:
+    - backport_pr_2624.patch
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
     - python
     - setuptools
-    - zlib 1.2.*
-    - libtiff 4.0.*
+    - zlib 1.2.8
+    - libtiff >=4.0.3,<4.0.8
     - jpeg 9*
-    - freetype 2.7|2.7.*
+    - freetype 2.7
     - tk 8.5.*
   run:
     - python
     - jpeg 9*
-    - zlib 1.2.*
-    - freetype 2.7|2.7.*
-    - libtiff 4.0.*
+    - zlib 1.2.8
+    - freetype 2.7
+    - libtiff >=4.0.3,<4.0.8
     - olefile
 
 test:
