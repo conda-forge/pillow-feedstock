@@ -1,0 +1,93 @@
+diff -Naur Pillow-4.3.0.orig/_imaging.c Pillow-4.3.0/_imaging.c
+--- Pillow-4.3.0.orig/_imaging.c	2017-10-02 12:20:24.000000000 -0300
++++ Pillow-4.3.0/_imaging.c	2017-10-04 12:15:25.388525478 -0300
+@@ -2212,16 +2212,15 @@
+         PyBytes_AsStringAndSize(encoded_string, &buffer, &len);
+     }
+ 
+-    if (len) {
+-        *text = calloc(len,1);
+-        if (*text) {
+-            memcpy(*text, buffer, len);
+-        }
+-        if(bytes) {
+-            Py_DECREF(bytes);
+-        }
+-        return;
++    *text = calloc(len,1);
++    if (*text) {
++        memcpy(*text, buffer, len);
+     }
++    if(bytes) {
++        Py_DECREF(bytes);
++    }
++
++    return;
+ 
+ 
+ #if PY_VERSION_HEX < 0x03000000
+@@ -2261,12 +2260,14 @@
+ 
+     _font_text_asBytes(encoded_string, &text);
+     if (!text) {
++        ImagingError_MemoryError();
+         return NULL;
+     }
+ 
+     im = ImagingNew(self->bitmap->mode, textwidth(self, text), self->ysize);
+     if (!im) {
+         free(text);
++        ImagingError_MemoryError();
+         return NULL;
+     }
+ 
+@@ -2298,7 +2299,7 @@
+   failed:
+     free(text);
+     ImagingDelete(im);
+-    return NULL;
++    Py_RETURN_NONE;
+ }
+ 
+ static PyObject*
+@@ -2313,6 +2314,7 @@
+ 
+     _font_text_asBytes(encoded_string, &text);
+     if (!text) {
++        ImagingError_MemoryError();
+         return NULL;
+     }
+ 
+diff -Naur Pillow-4.3.0.orig/_imagingft.c Pillow-4.3.0/_imagingft.c
+--- Pillow-4.3.0.orig/_imagingft.c	2017-10-02 12:20:24.000000000 -0300
++++ Pillow-4.3.0/_imagingft.c	2017-10-04 12:14:36.416812745 -0300
+@@ -225,11 +225,11 @@
+     if (PyUnicode_Check(string)) {
+         Py_UNICODE *text = PyUnicode_AS_UNICODE(string);
+         Py_ssize_t size = PyUnicode_GET_SIZE(string);
+-	if (! size) {
+-	    /* return 0 and clean up, no glyphs==no size, 
+-	       and raqm fails with empty strings */
+-	    goto failed;
+-	}
++        if (! size) {
++            /* return 0 and clean up, no glyphs==no size,
++               and raqm fails with empty strings */
++            goto failed;
++        }
+         if (!raqm_set_text(rq, (const uint32_t *)(text), size)) {
+             PyErr_SetString(PyExc_ValueError, "raqm_set_text() failed");
+             goto failed;
+@@ -239,9 +239,9 @@
+     else if (PyString_Check(string)) {
+         char *text = PyString_AS_STRING(string);
+         int size = PyString_GET_SIZE(string);
+-	if (! size) {
+-	    goto failed;
+-	}
++        if (! size) {
++            goto failed;
++        }
+         if (!raqm_set_text_utf8(rq, text, size)) {
+             PyErr_SetString(PyExc_ValueError, "raqm_set_text_utf8() failed");
+             goto failed;
