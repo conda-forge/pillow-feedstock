@@ -11,13 +11,13 @@ source:
     - backport_2788.patch
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
     - python
     - setuptools
-    - zlib 1.2.8
+    - zlib 1.2.11
     - libtiff >=4.0.3,<4.0.8
     - jpeg 9*
     - freetype 2.7
@@ -25,7 +25,7 @@ requirements:
   run:
     - python
     - jpeg 9*
-    - zlib 1.2.8
+    - zlib 1.2.11
     - freetype 2.7
     - libtiff >=4.0.3,<4.0.8
     - olefile
@@ -35,8 +35,8 @@ test:
     - PIL
     - PIL.Image
   commands:
-    - conda inspect linkages -p $PREFIX pillow  # [not win]
-    - conda inspect objects -p $PREFIX pillow  # [osx]
+    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
+    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
 
 about:
   home: http://python-imaging.github.io/
