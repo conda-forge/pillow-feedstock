@@ -11,23 +11,23 @@ source:
     - backport_2788.patch
 
 build:
-  number: 1
+  number: 2
 
 requirements:
   build:
     - python
     - setuptools
     - zlib 1.2.11
-    - libtiff >=4.0.3,<4.0.8
+    - libtiff >=4.0.8,<4.0.10
     - jpeg 9*
-    - freetype 2.7
-    - tk 8.5.*
+    - freetype 2.8.*
+    - tk 8.6.*
   run:
     - python
     - jpeg 9*
     - zlib 1.2.11
-    - freetype 2.7
-    - libtiff >=4.0.3,<4.0.8
+    - freetype 2.8.*
+    - libtiff >=4.0.8,<4.0.10
     - olefile
 
 test:
