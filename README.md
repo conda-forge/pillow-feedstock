@@ -1,7 +1,7 @@
 About pillow
 ============
 
-Home: http://python-imaging.github.io/
+Home: https://pillow.readthedocs.io
 
 Package license: PIL
 
@@ -23,7 +23,7 @@ Current release info
 Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/pillow/badges/version.svg)](https://anaconda.org/conda-forge/pillow)
 Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/pillow/badges/downloads.svg)](https://anaconda.org/conda-forge/pillow)
 
-Installing pillow
+Installing Pillow
 =================
 
 Installing `pillow` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
@@ -56,13 +56,13 @@ for each of the installable packages. Such a repository is known as a *feedstock
 A feedstock is made up of a conda recipe (the instructions on what and how to build
 the package) and the necessary configurations for automatic building using freely
 available continuous integration services. Thanks to the awesome service provided by
-[CircleCI](https://circleci.com/), [AppVeyor](http://www.appveyor.com/)
-and [TravisCI](https://travis-ci.org/) it is possible to build and upload installable
+[CircleCI](https://circleci.com/), [AppVeyor](https://www.appveyor.com/)
+and [Travis CI](https://travis-ci.org/) it is possible to build and upload installable
 packages to the [conda-forge](https://anaconda.org/conda-forge)
-[Anaconda-Cloud](http://docs.anaconda.org/) channel for Linux, Windows and OSX respectively.
+[Anaconda Cloud](https://docs.anaconda.org/) channel for Linux, Windows and macOS respectively.
 
 To manage the continuous integration and simplify feedstock maintenance
-[conda-smithy](http://github.com/conda-forge/conda-smithy) has been developed.
+[conda-smithy](https://github.com/conda-forge/conda-smithy) has been developed.
 Using the ``conda-forge.yml`` within this repository, it is possible to re-render all of
 this feedstock's supporting files (e.g. the CI configuration files) with ``conda smithy rerender``.
 
