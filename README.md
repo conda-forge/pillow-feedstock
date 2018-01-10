@@ -1,7 +1,7 @@
 About pillow
 ============
 
-Home: http://python-imaging.github.io/
+Home: https://pillow.readthedocs.io
 
 Package license: PIL
 
