@@ -27,6 +27,7 @@ requirements:
     - freetype 2.8.1
     - libtiff >=4.0.8,<4.0.10
     - olefile
+    - tk 8.6.*
 
 test:
   imports:
