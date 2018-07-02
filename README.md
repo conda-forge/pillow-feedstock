@@ -14,14 +14,16 @@ Summary: Pillow is the friendly PIL fork by Alex Clark and Contributors.
 Current build status
 ====================
 
-Linux: [![Circle CI](https://circleci.com/gh/conda-forge/pillow-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/pillow-feedstock)
-OSX: [![TravisCI](https://travis-ci.org/conda-forge/pillow-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/pillow-feedstock)
-Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/pillow-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/pillow-feedstock/branch/master)
+[![Linux](https://img.shields.io/circleci/project/github/conda-forge/pillow-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/pillow-feedstock)
+[![OSX](https://img.shields.io/travis/conda-forge/pillow-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/pillow-feedstock)
+[![Windows](https://img.shields.io/appveyor/ci/conda-forge/pillow-feedstock/master.svg?label=Windows)](https://ci.appveyor.com/project/conda-forge/pillow-feedstock/branch/master)
 
 Current release info
 ====================
-Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/pillow/badges/version.svg)](https://anaconda.org/conda-forge/pillow)
-Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/pillow/badges/downloads.svg)](https://anaconda.org/conda-forge/pillow)
+
+| Name | Downloads | Version | Platforms |
+| --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-pillow-green.svg)](https://anaconda.org/conda-forge/pillow) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/pillow.svg)](https://anaconda.org/conda-forge/pillow) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/pillow.svg)](https://anaconda.org/conda-forge/pillow) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/pillow.svg)](https://anaconda.org/conda-forge/pillow) |
 
 Installing pillow
 =================
