@@ -1,5 +1,5 @@
 c_compiler:
-- toolchain_c
+- vs2008
 freetype:
 - 2.8.1
 jpeg:
@@ -21,8 +21,11 @@ pin_run_as_build:
   zlib:
     max_pin: x.x
 python:
-- '3.6'
+- '2.7'
 tk:
 - '8.6'
+zip_keys:
+- - python
+  - c_compiler
 zlib:
 - '1.2'

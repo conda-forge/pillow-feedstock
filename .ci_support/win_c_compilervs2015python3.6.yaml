@@ -1,5 +1,5 @@
 c_compiler:
-- toolchain_c
+- vs2015
 freetype:
 - 2.8.1
 jpeg:
@@ -24,5 +24,8 @@ python:
 - '3.6'
 tk:
 - '8.6'
+zip_keys:
+- - python
+  - c_compiler
 zlib:
 - '1.2'
