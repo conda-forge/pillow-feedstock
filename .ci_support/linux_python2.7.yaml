@@ -1,6 +1,28 @@
+c_compiler:
+- toolchain_c
+freetype:
+- 2.8.1
+jpeg:
+- '9'
+libtiff:
+- 4.0.9
 pin_run_as_build:
+  freetype:
+    max_pin: x.x
+  jpeg:
+    max_pin: x
+  libtiff:
+    max_pin: x
   python:
     min_pin: x.x
     max_pin: x.x
+  tk:
+    max_pin: x.x
+  zlib:
+    max_pin: x.x
 python:
 - '2.7'
+tk:
+- '8.6'
+zlib:
+- '1.2'

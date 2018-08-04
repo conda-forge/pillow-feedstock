@@ -7,7 +7,7 @@ Package license: PIL
 
 Feedstock license: BSD 3-Clause
 
-Summary: Pillow is the friendly PIL fork by Alex Clark and Contributors.
+Summary: Pillow is the friendly PIL fork by Alex Clark and Contributors
 
 
 
