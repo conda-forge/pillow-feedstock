@@ -11,5 +11,5 @@ set FREETYPE_ROOT=%LIBRARY_PREFIX%
 :: set LCMS_ROOT=%LIBRARY_PREFIX%
 
 
-%PYTHON% setup.py install --single-version-externally-managed --record=record.txt
+%PYTHON% -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
 if errorlevel 1 exit 1
