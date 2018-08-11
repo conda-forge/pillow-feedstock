@@ -1,14 +1,14 @@
 c_compiler:
 - vs2008
 freetype:
-- 2.8.1
+- 2.9.1
 jpeg:
 - '9'
 libtiff:
 - 4.0.9
 pin_run_as_build:
   freetype:
-    max_pin: x.x
+    max_pin: x
   jpeg:
     max_pin: x
   libtiff:
