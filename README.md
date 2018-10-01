@@ -14,8 +14,7 @@ Summary: Pillow is the friendly PIL fork by Alex Clark and Contributors
 Current build status
 ====================
 
-[![Linux](https://img.shields.io/circleci/project/github/conda-forge/pillow-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/pillow-feedstock)
-[![OSX](https://img.shields.io/travis/conda-forge/pillow-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/pillow-feedstock)
+[![Linux,OSX](https://img.shields.io/circleci/project/github/conda-forge/pillow-feedstock/master.svg?label=Linux,OSX)](https://circleci.com/gh/conda-forge/pillow-feedstock)
 [![Windows](https://img.shields.io/appveyor/ci/conda-forge/pillow-feedstock/master.svg?label=Windows)](https://ci.appveyor.com/project/conda-forge/pillow-feedstock/branch/master)
 
 Current release info
