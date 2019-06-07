@@ -9,7 +9,7 @@ source:
   sha256: 809c0a2ce9032cbcd7b5313f71af4bdc5c8c771cb86eb7559afd954cab82ebb5
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
@@ -19,6 +19,7 @@ requirements:
     - pip
     - zlib
     - libtiff
+    - libwebp
     - jpeg
     - freetype
     - tk
@@ -28,6 +29,7 @@ requirements:
     - zlib
     - freetype
     - libtiff
+    - libwebp
     - olefile
     - tk
 
