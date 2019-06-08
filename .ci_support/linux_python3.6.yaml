@@ -14,8 +14,6 @@ jpeg:
 - '9'
 libtiff:
 - 4.0.9
-libwebp:
-- 1.0.0
 pin_run_as_build:
   freetype:
     max_pin: x
@@ -23,8 +21,6 @@ pin_run_as_build:
     max_pin: x
   libtiff:
     max_pin: x
-  libwebp:
-    max_pin: x.x
   python:
     min_pin: x.x
     max_pin: x.x
