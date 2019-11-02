@@ -10,10 +10,6 @@ jobs:
   strategy:
     maxParallel: 8
     matrix:
-      linux_aarch64_python2.7:
-        CONFIG: linux_aarch64_python2.7
-        UPLOAD_PACKAGES: True
-        DOCKER_IMAGE: condaforge/linux-anvil-aarch64
       linux_aarch64_python3.6:
         CONFIG: linux_aarch64_python3.6
         UPLOAD_PACKAGES: True
@@ -22,16 +18,20 @@ jobs:
         CONFIG: linux_aarch64_python3.7
         UPLOAD_PACKAGES: True
         DOCKER_IMAGE: condaforge/linux-anvil-aarch64
-      linux_ppc64le_python2.7:
-        CONFIG: linux_ppc64le_python2.7
+      linux_aarch64_python3.8:
+        CONFIG: linux_aarch64_python3.8
         UPLOAD_PACKAGES: True
-        DOCKER_IMAGE: condaforge/linux-anvil-ppc64le
+        DOCKER_IMAGE: condaforge/linux-anvil-aarch64
       linux_ppc64le_python3.6:
         CONFIG: linux_ppc64le_python3.6
         UPLOAD_PACKAGES: True
         DOCKER_IMAGE: condaforge/linux-anvil-ppc64le
       linux_ppc64le_python3.7:
         CONFIG: linux_ppc64le_python3.7
+        UPLOAD_PACKAGES: True
+        DOCKER_IMAGE: condaforge/linux-anvil-ppc64le
+      linux_ppc64le_python3.8:
+        CONFIG: linux_ppc64le_python3.8
         UPLOAD_PACKAGES: True
         DOCKER_IMAGE: condaforge/linux-anvil-ppc64le
       linux_python2.7:
@@ -44,6 +44,10 @@ jobs:
         DOCKER_IMAGE: condaforge/linux-anvil-comp7
       linux_python3.7:
         CONFIG: linux_python3.7
+        UPLOAD_PACKAGES: True
+        DOCKER_IMAGE: condaforge/linux-anvil-comp7
+      linux_python3.8:
+        CONFIG: linux_python3.8
         UPLOAD_PACKAGES: True
         DOCKER_IMAGE: condaforge/linux-anvil-comp7
   steps:
