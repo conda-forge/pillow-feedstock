@@ -13,7 +13,7 @@ freetype:
 jpeg:
 - '9'
 libtiff:
-- 4.0.10
+- 4.1.0
 pin_run_as_build:
   freetype:
     max_pin: x
