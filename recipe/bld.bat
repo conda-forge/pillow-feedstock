@@ -11,5 +11,5 @@ set FREETYPE_ROOT=%LIBRARY_PREFIX%
 :: set LCMS_ROOT=%LIBRARY_PREFIX%
 
 
-%PYTHON% -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
+%PYTHON% -m pip install . --no-deps -vv
 if errorlevel 1 exit 1
