@@ -1,9 +1,5 @@
-MACOSX_DEPLOYMENT_TARGET:
-- '10.9'
 c_compiler:
-- clang
-c_compiler_version:
-- '9'
+- vs2015
 channel_sources:
 - conda-forge,defaults
 channel_targets:
@@ -13,11 +9,7 @@ freetype:
 jpeg:
 - '9'
 libtiff:
-- 4.1.0
-macos_machine:
-- x86_64-apple-darwin13.4.0
-macos_min_version:
-- '10.9'
+- '4.0'
 pin_run_as_build:
   freetype:
     max_pin: x
@@ -33,8 +25,11 @@ pin_run_as_build:
   zlib:
     max_pin: x.x
 python:
-- '2.7'
+- '3.8'
 tk:
 - '8.6'
+zip_keys:
+- - python
+  - c_compiler
 zlib:
 - '1.2'
