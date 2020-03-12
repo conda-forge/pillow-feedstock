@@ -1,19 +1,9 @@
-BUILD:
-- aarch64-conda_cos7-linux-gnu
 c_compiler:
-- gcc
-c_compiler_version:
-- '7'
-cdt_arch:
-- aarch64
-cdt_name:
-- cos7
+- vs2015
 channel_sources:
-- conda-forge,c4aarch64,defaults
+- conda-forge,defaults
 channel_targets:
 - conda-forge main
-docker_image:
-- condaforge/linux-anvil-aarch64
 freetype:
 - 2.9.1
 jpeg:
@@ -35,8 +25,11 @@ pin_run_as_build:
   zlib:
     max_pin: x.x
 python:
-- '3.8'
+- 3.6.* *_cpython
 tk:
 - '8.6'
+zip_keys:
+- - python
+  - c_compiler
 zlib:
 - '1.2'
