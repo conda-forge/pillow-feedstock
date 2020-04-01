@@ -1,4 +1,4 @@
-{% set version = "7.0.0" %}
+{% set version = "7.1.0" %}
 
 package:
   name: pillow
@@ -6,10 +6,10 @@ package:
 
 source:
   url: https://pypi.io/packages/source/P/Pillow/Pillow-{{ version }}.tar.gz
-  sha256: 4d9ed9a64095e031435af120d3c910148067087541131e82b3e8db302f4c8946
+  sha256: fb13e40bd17615a03192f03cab35df0fbfb61ab58ef08ece42884a6bd314faf4
 
 build:
-  number: 1
+  number: 0
   skip: true  # [py==27]
 
 requirements:
@@ -41,7 +41,7 @@ about:
   home: https://pillow.readthedocs.io
   license: PIL
   license_file: LICENSE
-  summary: 'Pillow is the friendly PIL fork by Alex Clark and Contributors'
+  summary: Pillow is the friendly PIL fork by Alex Clark and Contributors
 
 extra:
   recipe-maintainers:
