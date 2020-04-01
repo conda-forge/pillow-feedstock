@@ -141,45 +141,45 @@ Current build status
                 </a>
               </td>
             </tr><tr>
-              <td>win_c_compilervs2015libtiff4.0python3.6.____cpython</td>
+              <td>win_libtiff4.0python3.6.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=784&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pillow-feedstock?branchName=master&jobName=win&configuration=win_c_compilervs2015libtiff4.0python3.6.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pillow-feedstock?branchName=master&jobName=win&configuration=win_libtiff4.0python3.6.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>win_c_compilervs2015libtiff4.0python3.7.____cpython</td>
+              <td>win_libtiff4.0python3.7.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=784&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pillow-feedstock?branchName=master&jobName=win&configuration=win_c_compilervs2015libtiff4.0python3.7.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pillow-feedstock?branchName=master&jobName=win&configuration=win_libtiff4.0python3.7.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>win_c_compilervs2015libtiff4.0python3.8.____cpython</td>
+              <td>win_libtiff4.0python3.8.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=784&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pillow-feedstock?branchName=master&jobName=win&configuration=win_c_compilervs2015libtiff4.0python3.8.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pillow-feedstock?branchName=master&jobName=win&configuration=win_libtiff4.0python3.8.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>win_c_compilervs2015libtiff4.1python3.6.____cpython</td>
+              <td>win_libtiff4.1python3.6.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=784&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pillow-feedstock?branchName=master&jobName=win&configuration=win_c_compilervs2015libtiff4.1python3.6.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pillow-feedstock?branchName=master&jobName=win&configuration=win_libtiff4.1python3.6.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>win_c_compilervs2015libtiff4.1python3.7.____cpython</td>
+              <td>win_libtiff4.1python3.7.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=784&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pillow-feedstock?branchName=master&jobName=win&configuration=win_c_compilervs2015libtiff4.1python3.7.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pillow-feedstock?branchName=master&jobName=win&configuration=win_libtiff4.1python3.7.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>win_c_compilervs2015libtiff4.1python3.8.____cpython</td>
+              <td>win_libtiff4.1python3.8.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=784&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pillow-feedstock?branchName=master&jobName=win&configuration=win_c_compilervs2015libtiff4.1python3.8.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pillow-feedstock?branchName=master&jobName=win&configuration=win_libtiff4.1python3.8.____cpython" alt="variant">
                 </a>
               </td>
             </tr>
