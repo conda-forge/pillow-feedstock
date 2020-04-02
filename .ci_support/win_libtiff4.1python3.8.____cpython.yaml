@@ -9,7 +9,7 @@ freetype:
 jpeg:
 - '9'
 libtiff:
-- '4.0'
+- '4.1'
 pin_run_as_build:
   freetype:
     max_pin: x
@@ -28,8 +28,5 @@ python:
 - 3.8.* *_cpython
 tk:
 - '8.6'
-zip_keys:
-- - python
-  - c_compiler
 zlib:
 - '1.2'
