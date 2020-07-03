@@ -9,7 +9,7 @@ source:
   sha256: 97f9e7953a77d5a70f49b9a48da7776dc51e9b738151b22dacf101641594a626
 
 build:
-  number: 0
+  number: 1
   skip: true  # [py==27]
 
 requirements:
@@ -19,6 +19,7 @@ requirements:
     - python
     - pip
     - zlib
+    - lcms2
     - libtiff
     - jpeg
     - freetype
@@ -36,6 +37,7 @@ test:
   imports:
     - PIL
     - PIL.Image
+    - PIL.ImageCms
 
 about:
   home: https://pillow.readthedocs.io
