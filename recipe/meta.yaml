@@ -18,7 +18,7 @@ requirements:
   host:
     - python
     - pip
-    - setuptools <48
+    - setuptools
     - zlib
     - lcms2
     - libtiff
