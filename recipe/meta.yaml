@@ -20,7 +20,7 @@ requirements:
     - pip
     - setuptools
     - zlib
-    - lcms2
+    - lcms2  # [not win]
     - libtiff
     - jpeg
     - freetype
@@ -38,7 +38,7 @@ test:
   imports:
     - PIL
     - PIL.Image
-    - PIL.ImageCms
+    - PIL.ImageCms  # [not win]
 
 about:
   home: https://pillow.readthedocs.io
