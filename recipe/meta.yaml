@@ -9,7 +9,7 @@ source:
   sha256: 97f9e7953a77d5a70f49b9a48da7776dc51e9b738151b22dacf101641594a626
 
 build:
-  number: 0
+  number: 1
   skip: true  # [py==27]
 
 requirements:
@@ -18,7 +18,9 @@ requirements:
   host:
     - python
     - pip
+    - setuptools
     - zlib
+    - lcms2  # [not win]
     - libtiff
     - jpeg
     - freetype
@@ -36,10 +38,11 @@ test:
   imports:
     - PIL
     - PIL.Image
+    - PIL.ImageCms  # [not win]
 
 about:
   home: https://pillow.readthedocs.io
-  license: PIL
+  license: LicenseRef-PIL
   license_file: LICENSE
   summary: Pillow is the friendly PIL fork by Alex Clark and Contributors
 

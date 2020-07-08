@@ -3,9 +3,9 @@ About pillow
 
 Home: https://pillow.readthedocs.io
 
-Package license: PIL
+Package license: LicenseRef-PIL
 
-Feedstock license: BSD 3-Clause
+Feedstock license: BSD-3-Clause
 
 Summary: Pillow is the friendly PIL fork by Alex Clark and Contributors
 
