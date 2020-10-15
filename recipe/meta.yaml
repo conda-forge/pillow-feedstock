@@ -11,6 +11,8 @@ source:
 build:
   number: 0
   skip: true  # [py==27]
+  ignore_run_exports:
+    - tk
 
 requirements:
   build:
