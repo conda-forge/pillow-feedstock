@@ -11,7 +11,7 @@ channel_targets:
 docker_image:
 - condaforge/linux-anvil-comp7
 freetype:
-- 2.9.1
+- '2'
 jpeg:
 - '9'
 libtiff:
