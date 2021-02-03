@@ -15,7 +15,7 @@ freetype:
 jpeg:
 - '9'
 libtiff:
-- '4.1'
+- '4'
 pin_run_as_build:
   freetype:
     max_pin: x
@@ -36,5 +36,8 @@ target_platform:
 - linux-64
 tk:
 - '8.6'
+zip_keys:
+- - cdt_name
+  - docker_image
 zlib:
 - '1.2'
