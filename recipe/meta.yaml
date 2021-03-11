@@ -46,7 +46,7 @@ test:
     - PIL._imagingft
     - PIL._imagingmath
     - PIL._imagingmorph
-    - PIL._imagingtk  # [linux and not (arm or ppc64le)]
+    - PIL._imagingtk  # [linux and not (arm or ppc64le or aarch64)]
 
 about:
   home: https://pillow.readthedocs.io
