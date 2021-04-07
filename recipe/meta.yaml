@@ -25,11 +25,13 @@ requirements:
     - lcms2
     - libtiff
     - jpeg
+    - openjpeg
     - freetype
     - tk
   run:
     - python
     - jpeg
+    - openjpeg
     - zlib
     - freetype
     - libtiff
