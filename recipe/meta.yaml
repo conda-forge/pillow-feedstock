@@ -43,6 +43,10 @@ test:
     - PIL
     - PIL.Image
     - PIL.ImageCms
+  requires:
+    - fsspec
+    - requests
+    - aiohttp
 
 about:
   home: https://pillow.readthedocs.io
