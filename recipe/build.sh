@@ -1,7 +1,7 @@
 #!/bin/bash
 
 export JPEG_ROOT=$PREFIX
-# export JPEG2K_ROOT=None
+export JPEG2K_ROOT=$PREFIX
 export ZLIB_ROOT=$PREFIX
 # export IMAGEQUANT_ROOT=None
 export TIFF_ROOT=$PREFIX

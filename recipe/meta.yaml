@@ -9,7 +9,7 @@ source:
   sha256: b07c660e014852d98a00a91adfbe25033898a9d90a8f39beb2437d22a203fc44
 
 build:
-  number: 0
+  number: 1
   skip: true  # [py==27]
 
 requirements:
@@ -25,11 +25,13 @@ requirements:
     - lcms2
     - libtiff
     - jpeg
+    - openjpeg
     - freetype
     - tk
   run:
     - python
     - jpeg
+    - openjpeg
     - zlib
     - freetype
     - libtiff
@@ -41,6 +43,10 @@ test:
     - PIL
     - PIL.Image
     - PIL.ImageCms
+  requires:
+    - fsspec
+    - requests
+    - aiohttp
 
 about:
   home: https://pillow.readthedocs.io
