@@ -1,0 +1,15 @@
+--- setup.py.orig	2021-05-05 12:35:30.000000000 -0600
++++ setup.py	2021-05-05 12:38:18.000000000 -0600
+@@ -810,12 +810,6 @@
+         if feature.tiff:
+             libs.append(feature.tiff)
+             defs.append(("HAVE_LIBTIFF", None))
+-            if sys.platform == "win32":
+-                # This define needs to be defined if-and-only-if it was defined
+-                # when compiling LibTIFF. LibTIFF doesn't expose it in `tiffconf.h`,
+-                # so we have to guess; by default it is defined in all Windows builds.
+-                # See #4237, #5243, #5359 for more information.
+-                defs.append(("USE_WIN32_FILEIO", None))
+         if feature.xcb:
+             libs.append(feature.xcb)
+             defs.append(("HAVE_XCB", None))
