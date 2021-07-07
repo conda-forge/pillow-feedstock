@@ -14,6 +14,7 @@ build:
   ignore_run_exports:
     - tk
     - jpeg
+    - libwebp  # [win]
 
 requirements:
   build:
