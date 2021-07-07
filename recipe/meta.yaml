@@ -31,13 +31,13 @@ requirements:
     # see https://pillow.readthedocs.io/en/latest/installation.html#external-libraries)
     - lcms2  # [not win]
     - libtiff
-    - openjpeg
+    #- openjpeg
     - freetype
     - tk
   run:
     - python
     - jpeg
-    - openjpeg
+    #- openjpeg
     - zlib
     - freetype
     - libtiff
