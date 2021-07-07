@@ -28,6 +28,7 @@ requirements:
     - jpeg
     - freetype
     - tk
+    - wheel
   run:
     - python
     - jpeg
@@ -47,10 +48,15 @@ test:
     - PIL._imagingmath
     - PIL._imagingmorph
     - PIL._imagingtk  # [linux and not (arm or ppc64le or aarch64)]
+  requires:
+    - pip
+  commands:
+    - pip check
 
 about:
   home: https://pillow.readthedocs.io
   license: LicenseRef-PIL
+  license_family: Other 
   license_file: LICENSE
   summary: Pillow is the friendly PIL fork by Alex Clark and Contributors
   description: |
