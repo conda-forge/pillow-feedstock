@@ -34,6 +34,7 @@ requirements:
     - libtiff
     - freetype
     - tk
+    - libwebp >=0.3.0
   run:
     - python
     - jpeg
@@ -42,6 +43,7 @@ requirements:
     - libtiff
     - olefile
     - tk
+    - libwebp >=0.3.0
 
 test:
   imports:
