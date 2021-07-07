@@ -22,16 +22,22 @@ requirements:
     - python
     - pip
     - setuptools
+    - wheel
+    # Required by default
     - zlib
+    - jpeg
+    # Optional dependencies 
+    # (also can be incuded libwebp, libimagequant, libraqm, libxcb,
+    # see https://pillow.readthedocs.io/en/latest/installation.html#external-libraries)
     - lcms2  # [not win]
     - libtiff
-    - jpeg
+    - openjpeg
     - freetype
     - tk
-    - wheel
   run:
     - python
     - jpeg
+    - openjpeg
     - zlib
     - freetype
     - libtiff
@@ -50,6 +56,8 @@ test:
     - PIL._imagingtk  # [linux and not (arm or ppc64le or aarch64)]
   requires:
     - pip
+    - requests
+    - aiohttp
   commands:
     - pip check
 
