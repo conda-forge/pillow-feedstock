@@ -27,17 +27,16 @@ requirements:
     - zlib
     - jpeg
     # Optional dependencies 
-    # (also can be incuded libwebp, libimagequant, libraqm, libxcb,
+    # (also can be incuded libwebp, libimagequant, libraqm, 
+    # libxcb, openjpeg (it causes build errors on win32),
     # see https://pillow.readthedocs.io/en/latest/installation.html#external-libraries)
     - lcms2  # [not win]
     - libtiff
-    #- openjpeg
     - freetype
     - tk
   run:
     - python
     - jpeg
-    #- openjpeg
     - zlib
     - freetype
     - libtiff
