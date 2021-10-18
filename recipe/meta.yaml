@@ -10,7 +10,7 @@ source:
 
 build:
   number: 0
-  skip: true  # [py==27]
+  skip: true  # [py<36]
   ignore_run_exports:
     - tk
     - jpeg
@@ -60,6 +60,7 @@ test:
     - pip
     - requests
     - aiohttp
+    - fsspec
   commands:
     - pip check
 
