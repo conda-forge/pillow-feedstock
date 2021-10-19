@@ -9,7 +9,7 @@ source:
   sha256: b8e2f83c56e141920c39464b852de3719dfbfb6e3c99a2d8da0edf4fb33176ed
 
 build:
-  number: 0
+  number: 1
   skip: true  # [py<36]
   ignore_run_exports:
     - tk
