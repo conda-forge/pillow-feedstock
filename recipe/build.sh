@@ -8,4 +8,4 @@ export TIFF_ROOT=$PREFIX
 export FREETYPE_ROOT=$PREFIX
 export LCMS_ROOT=$PREFIX
 
-$PYTHON -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
+$PYTHON -m pip install . --no-deps --ignore-installed --no-cache-dir --global-option="build_ext" --global-option="--enable-webp" -vvv
