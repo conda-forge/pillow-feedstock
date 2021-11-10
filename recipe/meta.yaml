@@ -1,4 +1,4 @@
-{% set version = "8.3.2" %}
+{% set version = "8.4.0" %}
 
 package:
   name: pillow
@@ -6,13 +6,14 @@ package:
 
 source:
   url: https://pypi.io/packages/source/P/Pillow/Pillow-{{ version }}.tar.gz
-  sha256: dde3f3ed8d00c72631bc19cbfff8ad3b6215062a5eed402381ad365f82f0c18c
+  sha256: b8e2f83c56e141920c39464b852de3719dfbfb6e3c99a2d8da0edf4fb33176ed
   patches:
-    - disable_win32_fileio.patch
+    - patches/0001-Build-without-USE_WIN32_FILEIO.patch
+    # Revert python-pillow/Pillow#5624 as it causes build to pick up wrong MacOS SDK
+    - patches/0002-Revert-Prefer-command-line-tools-SDK-on-macOS.patch
 
 build:
   number: 0
-  skip: true  # [py==27]
 
 requirements:
   build:
@@ -55,6 +56,7 @@ about:
   license: LicenseRef-PIL
   license_file: LICENSE
   summary: Pillow is the friendly PIL fork by Alex Clark and Contributors
+  dev_url: https://github.com/python-pillow/Pillow/
 
 extra:
   recipe-maintainers:
@@ -62,3 +64,4 @@ extra:
     - patricksnape
     - pelson
     - ocefpaf
+    - h-vetinari
