@@ -8,7 +8,7 @@ source:
   url: https://pypi.io/packages/source/P/Pillow/Pillow-{{ version }}.tar.gz
   sha256: b8e2f83c56e141920c39464b852de3719dfbfb6e3c99a2d8da0edf4fb33176ed
   patches:
-    - disable_win32_fileio.patch
+    - patches/0001-Build-without-USE_WIN32_FILEIO.patch
 
 build:
   number: 0
