@@ -9,6 +9,8 @@ Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/pillow-feedstoc
 
 Summary: Pillow is the friendly PIL fork by Alex Clark and Contributors
 
+Development: https://github.com/python-pillow/Pillow/
+
 Current build status
 ====================
 
@@ -324,6 +326,7 @@ In order to produce a uniquely identifiable distribution:
 Feedstock Maintainers
 =====================
 
+* [@h-vetinari](https://github.com/h-vetinari/)
 * [@jakirkham](https://github.com/jakirkham/)
 * [@ocefpaf](https://github.com/ocefpaf/)
 * [@patricksnape](https://github.com/patricksnape/)
