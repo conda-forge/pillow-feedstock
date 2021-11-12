@@ -9,8 +9,9 @@ source:
   sha256: b8e2f83c56e141920c39464b852de3719dfbfb6e3c99a2d8da0edf4fb33176ed
   patches:
     - patches/0001-Build-without-USE_WIN32_FILEIO.patch
-    # Revert python-pillow/Pillow#5624 as it causes build to pick up wrong MacOS SDK
-    - patches/0002-Revert-Prefer-command-line-tools-SDK-on-macOS.patch
+    # Backport python-pillow/Pillow#5828 (2 patches), can be dropped for v>=9.0
+    - patches/0002-Only-prefer-command-line-tools-SDK-on-macOS-over-the.patch
+    - patches/0003-Moved-macOS-SDK-logic-into-a-separate-method.patch
 
 build:
   number: 0
