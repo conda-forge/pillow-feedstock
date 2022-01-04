@@ -50,6 +50,7 @@ test:
     - Tests/
   requires:
     - pytest
+    - pytest-timeout
     # test dependency, see Tests/test_image_access.py
     - setuptools
     - {{ compiler('c') }}
