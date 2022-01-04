@@ -50,6 +50,9 @@ test:
     - Tests/
   requires:
     - pytest
+    # test dependency, see Tests/test_image_access.py
+    - setuptools
+    - {{ compiler('c') }}
     # for run_test.py
     - fsspec
     - aiohttp
