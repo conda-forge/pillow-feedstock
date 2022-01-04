@@ -28,5 +28,6 @@ index 23d91a5f2..35e8cf817 100755
 +        defs.append(("PILLOW_VERSION", f'"{PILLOW_VERSION}"'))
  
          self._update_extension("PIL._imaging", libs, defs)
+
 -- 
 2.32.0.windows.2
