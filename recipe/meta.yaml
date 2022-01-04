@@ -12,6 +12,7 @@ source:
     # Backport python-pillow/Pillow#5828 (2 patches), can be dropped for v>=9.0
     - patches/0002-Only-prefer-command-line-tools-SDK-on-macOS-over-the.patch
     - patches/0003-Moved-macOS-SDK-logic-into-a-separate-method.patch
+    - patches/0004-Do-not-quote-PILLOW_VERSION.patch
 
 build:
   number: 0

@@ -1,7 +1,7 @@
 From d9afb11be92a317de829f82aa175d3cdc572ec8e Mon Sep 17 00:00:00 2001
 From: Andrew Murray <radarhere@users.noreply.github.com>
 Date: Thu, 11 Nov 2021 20:51:13 +1100
-Subject: [PATCH 3/3] Moved macOS SDK logic into a separate method
+Subject: [PATCH 3/4] Moved macOS SDK logic into a separate method
 
 ---
  setup.py | 41 ++++++++++++++++++++++-------------------

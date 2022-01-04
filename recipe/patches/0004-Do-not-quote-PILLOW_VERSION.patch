@@ -1,0 +1,32 @@
+From 6c7bae7d19f7fcd52a7ffc519aa76eb71f10f9bb Tue Jan 4 13:54:46 2022
+From: Andrew Murray <radarhere@users.noreply.github.com>
+Date: Tue, Jan 4 2022 13:54:46 +1100
+Subject: [PATCH 4/4] Do not quote PILLOW_VERSION
+
+    Do not quote PILLOW_VERSION
+
+---
+ setup.py | 9 +--------
+ 1 file changed, 1 insertions(+), 8 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index 23d91a5f2..35e8cf817 100755
+--- a/setup.py
++++ b/setup.py
+@@ -840,14 +840,7 @@ class pil_build_ext(build_ext):
+         if struct.unpack("h", b"\0\1")[0] == 1:
+             defs.append(("WORDS_BIGENDIAN", None))
+ 
+-        if (
+-            sys.platform == "win32"
+-            and sys.version_info < (3, 9)
+-            and not (PLATFORM_PYPY or PLATFORM_MINGW)
+-        ):
+-            defs.append(("PILLOW_VERSION", f'"\\"{PILLOW_VERSION}\\""'))
+-        else:
+-            defs.append(("PILLOW_VERSION", f'"{PILLOW_VERSION}"'))
++        defs.append(("PILLOW_VERSION", f'"{PILLOW_VERSION}"'))
+ 
+         self._update_extension("PIL._imaging", libs, defs)
+-- 
+2.32.0.windows.2

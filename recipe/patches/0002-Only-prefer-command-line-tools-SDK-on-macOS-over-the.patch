@@ -1,7 +1,6 @@
-From c60bdf31dade079f53c217edd92230566e700db4 Mon Sep 17 00:00:00 2001
 From: Andrew Murray <radarhere@users.noreply.github.com>
 Date: Thu, 11 Nov 2021 20:47:46 +1100
-Subject: [PATCH 2/3] Only prefer command line tools SDK on macOS over the
+Subject: [PATCH 2/4] Only prefer command line tools SDK on macOS over the
  default
 
 ---
