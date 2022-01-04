@@ -47,7 +47,11 @@ test:
     - PIL.Image
     - PIL.ImageCms
   source_files:
+    # from upstream repo
     - Tests/
+  files:
+    # from recipe; some images cannot be in upstream repo, see Tests/README
+    - Tests/images
   requires:
     - pytest
     - pytest-timeout
