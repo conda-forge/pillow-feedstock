@@ -23,22 +23,23 @@ requirements:
     - python
     - pip
     - setuptools
-    - zlib
+    # libraries, c.f. https://github.com/python-pillow/Pillow/blob/9.0.0/setup.py#L30-L38
+    - freetype
+    - jpeg
+    - openjpeg
     - lcms2
     - libtiff
-    - jpeg
-    - openjpeg
-    - freetype
     - tk
+    - zlib
   run:
     - python
+    - freetype
     - jpeg
     - openjpeg
-    - zlib
-    - freetype
+    - lcms2
     - libtiff
-    - olefile
     - tk
+    - zlib
 
 test:
   imports:
