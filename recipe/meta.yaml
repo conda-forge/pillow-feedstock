@@ -50,6 +50,10 @@ test:
     - Tests/
   requires:
     - pytest
+    # for run_test.py
+    - fsspec
+    - aiohttp
+    - requests
   commands:
     - pytest Tests -v
 
