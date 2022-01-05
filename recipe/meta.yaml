@@ -41,6 +41,10 @@ requirements:
     - tk
     - zlib
 
+{% set tests_to_skip = "_not_a_real_test" %}
+# the following needs a viewer which we don't have
+{% set tests_to_skip = tests_to_skip + " or (test_imageshow and test_show)" %}  # [linux]
+
 test:
   imports:
     - PIL
@@ -63,7 +67,7 @@ test:
     - aiohttp
     - requests
   commands:
-    - pytest Tests -v
+    - pytest Tests -v -k "not ({{ tests_to_skip }})"
 
 about:
   home: https://pillow.readthedocs.io
