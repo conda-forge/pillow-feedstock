@@ -11,6 +11,11 @@ set FREETYPE_ROOT=%LIBRARY_PREFIX%
 set FRIBIDI_ROOT=%LIBRARY_PREFIX%
 set LCMS_ROOT=%LIBRARY_PREFIX%
 
+:: add --vendor-raqm to installation (cannot be passed through pip install)
+echo [build_ext] >> setup.cfg
+echo vendor_raqm=1 >> setup.cfg
+:: sanity check
+type setup.cfg
 
 %PYTHON% -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
 if errorlevel 1 exit 1
