@@ -25,19 +25,28 @@ requirements:
     - setuptools
     # libraries, c.f. https://github.com/python-pillow/Pillow/blob/9.0.0/setup.py#L30-L38
     - freetype
+    - fribidi
     - jpeg
     - openjpeg
     - lcms2
+    # not available elsewhere
+    - libimagequant  # [x86_64 and not win]
     - libtiff
+    - libwebp
+    - libxcb
     - tk
     - zlib
   run:
     - python
     - freetype
+    - fribidi
     - jpeg
     - openjpeg
     - lcms2
+    - libimagequant  # [x86_64 and not win]
     - libtiff
+    - libwebp
+    - libxcb
     - tk
     - zlib
 
