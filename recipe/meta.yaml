@@ -9,7 +9,11 @@ source:
   sha256: da6e69e9f11e9ea7081730abbf7bb8b0539cacfafa7a2ce934e1fe088db68fe7
   patches:
     - patches/0001-Build-without-USE_WIN32_FILEIO.patch
+    # upstream CI has a quirk that needs extra quotes for py37/py38 on windows;
+    # with our compilers, this just runs into failures, so we remove them
     - patches/0002-Do-not-quote-PILLOW_VERSION.patch
+    # windows needs help detecting webpmux & xcb
+    - patches/0003-add-WEBP_ROOT-XCB_ROOT.patch
 
 build:
   number: 0

@@ -8,6 +8,8 @@ export TIFF_ROOT=$PREFIX
 export FREETYPE_ROOT=$PREFIX
 export FRIBIDI_ROOT=$PREFIX
 export LCMS_ROOT=$PREFIX
+export WEBP_ROOT=$PREFIX
+export XCB_ROOT=$PREFIX
 
 # add --vendor-raqm to installation (cannot be passed through pip install)
 echo "[build_ext]" >> setup.cfg

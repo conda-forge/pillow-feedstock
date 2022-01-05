@@ -10,6 +10,8 @@ set TIFF_ROOT=%LIBRARY_PREFIX%
 set FREETYPE_ROOT=%LIBRARY_PREFIX%
 set FRIBIDI_ROOT=%LIBRARY_PREFIX%
 set LCMS_ROOT=%LIBRARY_PREFIX%
+set WEBP_ROOT=%LIBRARY_PREFIX%
+set XCB_ROOT=%LIBRARY_PREFIX%
 
 :: add --vendor-raqm to installation (cannot be passed through pip install)
 echo [build_ext] >> setup.cfg
