@@ -15,7 +15,7 @@ set XCB_ROOT=%LIBRARY_PREFIX%
 
 :: add --vendor-raqm to installation (cannot be passed through pip install)
 echo [build_ext] >> setup.cfg
-echo vendor_raqm=1 >> setup.cfg
+echo vendor-raqm=1 >> setup.cfg
 :: sanity check
 type setup.cfg
 
