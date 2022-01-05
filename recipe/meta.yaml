@@ -76,7 +76,7 @@ test:
     - aiohttp
     - requests
   commands:
-    - pytest Tests -v -k "not ({{ tests_to_skip }})"  # [not ppc64le]
+    - pytest -v -k "not ({{ tests_to_skip }})"  # [not ppc64le]
     # NOTE: test suite is skipped on ppc due to bugs in QEMU code that cause
     # CI to fail, even though the tests should run through on native hardware
 
