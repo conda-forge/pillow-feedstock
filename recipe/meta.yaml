@@ -55,6 +55,8 @@ requirements:
     - zlib
 
 {% set tests_to_skip = "_not_a_real_test" %}
+# compile smoke test failing to link python3x.lib
+{% set tests_to_skip = tests_to_skip + " or test_embeddable" %}                 # [win]
 # the following needs a viewer which we don't have
 {% set tests_to_skip = tests_to_skip + " or (test_imageshow and test_show)" %}  # [linux]
 
@@ -80,9 +82,6 @@ test:
     - aiohttp
     - requests
   commands:
-    # needed by TestEmbeddable::test_embeddable to find python
-    - set "INCLUDEPY=%LIBRARY_INC%"  # [win]
-    - set "LIBDIR=%PREFIX%/libs"     # [win]
     - pytest -v -k "not ({{ tests_to_skip }})"  # [not ppc64le]
     # NOTE: test suite is skipped on ppc due to bugs in QEMU code that cause
     # CI to fail, even though the tests should run through on native hardware
