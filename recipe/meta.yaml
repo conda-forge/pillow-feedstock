@@ -34,7 +34,7 @@ requirements:
     - openjpeg
     - lcms2
     # not available elsewhere
-    - libimagequant  # [x86_64 and not win]
+    - libimagequant  # [x86_64]
     - libtiff
     - libwebp
     - libxcb
@@ -47,7 +47,7 @@ requirements:
     - jpeg
     - openjpeg
     - lcms2
-    - libimagequant  # [x86_64 and not win]
+    - libimagequant  # [x86_64]
     - libtiff
     - libwebp
     - libxcb
