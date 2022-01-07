@@ -81,7 +81,8 @@ test:
     - requests
   commands:
     # needed by TestEmbeddable::test_embeddable to find python
-    - set "LIBDIR=%PREFIX%/libs"  # [win]
+    - set "INCLUDEPY=%LIBRARY_INC%"  # [win]
+    - set "LIBDIR=%PREFIX%/libs"     # [win]
     - pytest -v -k "not ({{ tests_to_skip }})"  # [not ppc64le]
     # NOTE: test suite is skipped on ppc due to bugs in QEMU code that cause
     # CI to fail, even though the tests should run through on native hardware
