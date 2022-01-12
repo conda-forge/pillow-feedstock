@@ -1,0 +1,15 @@
+diff --git a/src/PIL/TiffImagePlugin.py b/src/PIL/TiffImagePlugin.py
+index e54082fec..8ccdaf12c 100644
+--- a/src/PIL/TiffImagePlugin.py
++++ b/src/PIL/TiffImagePlugin.py
+@@ -1184,6 +1184,10 @@ class TiffImageFile(ImageFile.ImageFile):
+         # file descriptor, use that instead of reading
+         # into a string in python.
+         # libtiff closes the file descriptor, so pass in a dup.
++        position = self.fp.tell()
++        self.fp.seek(0)
++        fp = io.BytesIO(self.fp.read())
++        self.fp.seek(position)
+         try:
+             fp = hasattr(self.fp, "fileno") and os.dup(self.fp.fileno())
+             # flush the file descriptor, prevents error on pypy 2.4+
