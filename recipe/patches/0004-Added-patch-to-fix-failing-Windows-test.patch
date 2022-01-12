@@ -1,0 +1,27 @@
+From 9013aed5294ef34a66a229bfb12f75ef43abb54d Mon Sep 17 00:00:00 2001
+From: Andrew Murray <radarhere@users.noreply.github.com>
+Date: Wed, 12 Jan 2022 11:35:32 +1100
+Subject: [PATCH 4/4] Added patch to fix failing Windows test
+
+---
+ src/PIL/TiffImagePlugin.py | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/PIL/TiffImagePlugin.py b/src/PIL/TiffImagePlugin.py
+index 5df5c4f4..259a8854 100644
+--- a/src/PIL/TiffImagePlugin.py
++++ b/src/PIL/TiffImagePlugin.py
+@@ -1184,6 +1184,10 @@ class TiffImageFile(ImageFile.ImageFile):
+         # file descriptor, use that instead of reading
+         # into a string in python.
+         # libtiff closes the file descriptor, so pass in a dup.
++        position = self.fp.tell()
++        self.fp.seek(0)
++        fp = io.BytesIO(self.fp.read())
++        self.fp.seek(position)
+         try:
+             fp = hasattr(self.fp, "fileno") and os.dup(self.fp.fileno())
+             # flush the file descriptor, prevents error on pypy 2.4+
+-- 
+2.32.0.windows.2
+

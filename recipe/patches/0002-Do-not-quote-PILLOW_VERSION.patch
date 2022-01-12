@@ -1,7 +1,7 @@
 From 3ecfb3f876c8b35657549233657c37d8f5a5727e Mon Sep 17 00:00:00 2001
 From: Andrew Murray <radarhere@users.noreply.github.com>
 Date: Tue, 4 Jan 2022 13:54:46 +1100
-Subject: [PATCH 2/3] Do not quote PILLOW_VERSION
+Subject: [PATCH 2/4] Do not quote PILLOW_VERSION
 
 ---
  setup.py | 9 +--------

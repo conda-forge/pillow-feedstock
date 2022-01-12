@@ -14,7 +14,8 @@ source:
     - patches/0002-Do-not-quote-PILLOW_VERSION.patch
     # windows needs help detecting webpmux & xcb
     - patches/0003-add-WEBP_ROOT-XCB_ROOT.patch
-    - patches/0004.patch
+    # fix provided by upstream maintainer for failing test
+    - patches/0004-Added-patch-to-fix-failing-Windows-test.patch
 
 build:
   number: 0
