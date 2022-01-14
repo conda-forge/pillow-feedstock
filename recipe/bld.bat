@@ -19,5 +19,18 @@ echo vendor-raqm=1 >> setup.cfg
 :: sanity check
 type setup.cfg
 
+:: debug
+echo "Search for imagequant.dll, part 1"
+find "D:\bld" -iname imagequant.dll
+echo "Search for imagequant.dll, part 2"
+dir imagequant.dll /s
+echo "Search for imagequant.dll, part 3"
+dir %LIBRARY_PREFIX%
+echo "Search for imagequant.dll, part 4"
+dir %LIBRARY_LIB%
+echo "Search for imagequant.dll, part 5"
+dir %LIBRARY_BIN%
+echo "Search complete"
+
 %PYTHON% -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
 if errorlevel 1 exit 1
