@@ -1,4 +1,4 @@
-{% set version = "9.0.0" %}
+{% set version = "9.0.1" %}
 
 package:
   name: pillow
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/python-pillow/Pillow/archive/refs/tags/{{ version }}.tar.gz
-  sha256: da6e69e9f11e9ea7081730abbf7bb8b0539cacfafa7a2ce934e1fe088db68fe7
+  sha256: 01305f0befb644ce7fe90aa0c87573b9163a21d0e65149e8166c24974d9d37d2
   patches:
     - patches/0001-Build-without-USE_WIN32_FILEIO.patch
     # upstream CI has a quirk that needs extra quotes for py37/py38 on windows;
