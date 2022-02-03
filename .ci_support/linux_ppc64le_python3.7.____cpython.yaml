@@ -16,6 +16,8 @@ jpeg:
 - '9'
 libtiff:
 - '4'
+libwebp:
+- '1'
 openjpeg:
 - '2.4'
 pin_run_as_build:

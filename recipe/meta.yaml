@@ -1,17 +1,21 @@
-{% set version = "8.4.0" %}
+{% set version = "9.0.0" %}
 
 package:
   name: pillow
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/P/Pillow/Pillow-{{ version }}.tar.gz
-  sha256: b8e2f83c56e141920c39464b852de3719dfbfb6e3c99a2d8da0edf4fb33176ed
+  url: https://github.com/python-pillow/Pillow/archive/refs/tags/{{ version }}.tar.gz
+  sha256: da6e69e9f11e9ea7081730abbf7bb8b0539cacfafa7a2ce934e1fe088db68fe7
   patches:
     - patches/0001-Build-without-USE_WIN32_FILEIO.patch
-    # Backport python-pillow/Pillow#5828 (2 patches), can be dropped for v>=9.0
-    - patches/0002-Only-prefer-command-line-tools-SDK-on-macOS-over-the.patch
-    - patches/0003-Moved-macOS-SDK-logic-into-a-separate-method.patch
+    # upstream CI has a quirk that needs extra quotes for py37/py38 on windows;
+    # with our compilers, this just runs into failures, so we remove them
+    - patches/0002-Do-not-quote-PILLOW_VERSION.patch
+    # windows needs help detecting webpmux & xcb
+    - patches/0003-add-WEBP_ROOT-XCB_ROOT.patch
+    # fix provided by upstream maintainer for failing test
+    - patches/0004-Added-patch-to-fix-failing-Windows-test.patch
 
 build:
   number: 0
@@ -25,32 +29,64 @@ requirements:
     - python
     - pip
     - setuptools
-    - zlib
-    - lcms2
-    - libtiff
+    # libraries, c.f. https://github.com/python-pillow/Pillow/blob/9.0.0/setup.py#L30-L38
+    - freetype
+    - fribidi
     - jpeg
     - openjpeg
-    - freetype
+    - lcms2
+    # not available elsewhere
+    - libimagequant  # [x86_64]
+    - libtiff
+    - libwebp
+    - libxcb
     - tk
+    - zlib
   run:
     - python
+    - freetype
+    - fribidi
     - jpeg
     - openjpeg
-    - zlib
-    - freetype
+    - lcms2
+    - libimagequant  # [x86_64]
     - libtiff
-    - olefile
+    - libwebp
+    - libxcb
     - tk
+    - zlib
+
+{% set tests_to_skip = "_not_a_real_test" %}
+# compile smoke test failing to link python3x.lib
+{% set tests_to_skip = tests_to_skip + " or test_embeddable" %}                 # [win]
+# the following needs a viewer which we don't have
+{% set tests_to_skip = tests_to_skip + " or (test_imageshow and test_show)" %}  # [linux]
 
 test:
   imports:
     - PIL
     - PIL.Image
     - PIL.ImageCms
+  source_files:
+    # from upstream repo
+    - Tests/
+  files:
+    # from recipe; some images cannot be in upstream repo, see Tests/README
+    - Tests/images
   requires:
+    - pytest
+    - pytest-timeout
+    # test dependency, see Tests/test_image_access.py
+    - setuptools
+    - {{ compiler('c') }}
+    # for run_test.py
     - fsspec
-    - requests
     - aiohttp
+    - requests
+  commands:
+    - pytest -v -k "not ({{ tests_to_skip }})"  # [not ppc64le]
+    # NOTE: test suite is skipped on ppc due to bugs in QEMU code that cause
+    # CI to fail, even though the tests should run through on native hardware
 
 about:
   home: https://pillow.readthedocs.io

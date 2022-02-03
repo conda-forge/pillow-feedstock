@@ -14,6 +14,8 @@ jpeg:
 - '9'
 libtiff:
 - '4'
+libwebp:
+- '1'
 macos_machine:
 - arm64-apple-darwin20.0.0
 openjpeg:
