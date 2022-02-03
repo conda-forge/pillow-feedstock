@@ -1,4 +1,4 @@
-{% set version = "8.4.0" %}
+{% set version = "9.0.1" %}
 
 package:
   name: pillow
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/P/Pillow/Pillow-{{ version }}.tar.gz
-  sha256: b8e2f83c56e141920c39464b852de3719dfbfb6e3c99a2d8da0edf4fb33176ed
+  sha256: 6c8bc8238a7dfdaf7a75f5ec5a663f4173f8c367e5a39f87e720495e1eed75fa
   patches:
     - patches/0001-Build-without-USE_WIN32_FILEIO.patch
     # Backport python-pillow/Pillow#5828 (2 patches), can be dropped for v>=9.0
