@@ -36,7 +36,9 @@ requirements:
     - openjpeg
     - lcms2
     # not available elsewhere
-    - libimagequant  # [x86_64]
+    # currently disabled on windows due to libimagequant depending on llvm-openmp, see
+    # https://github.com/pytorch/pytorch/issues/72293
+    - libimagequant  # [x86_64 and not win]
     - libtiff
     - libwebp
     - libxcb
