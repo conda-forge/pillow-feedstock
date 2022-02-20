@@ -31,14 +31,16 @@ requirements:
     - setuptools
     # libraries, c.f. https://github.com/python-pillow/Pillow/blob/9.0.0/setup.py#L30-L38
     - freetype
-    - fribidi
+    # fribidi and libimagequant disabled due to
+    # GPL discussion, see #109 and #111
+    # - fribidi
     - jpeg
     - openjpeg
     - lcms2
     # not available elsewhere
     # currently disabled on windows due to libimagequant depending on llvm-openmp, see
     # https://github.com/pytorch/pytorch/issues/72293
-    - libimagequant  # [x86_64 and not win]
+    # - libimagequant  # [x86_64 and not win]
     - libtiff
     - libwebp
     - libxcb
@@ -47,11 +49,11 @@ requirements:
   run:
     - python
     - freetype
-    - fribidi
+    # - fribidi
     - jpeg
     - openjpeg
     - lcms2
-    - libimagequant  # [x86_64 and not win]
+    # - libimagequant  # [x86_64 and not win]
     - libtiff
     - libwebp
     - libxcb
