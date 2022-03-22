@@ -65,6 +65,8 @@ requirements:
 {% set tests_to_skip = tests_to_skip + " or test_embeddable" %}                 # [win]
 # the following needs a viewer which we don't have
 {% set tests_to_skip = tests_to_skip + " or (test_imageshow and test_show)" %}  # [linux]
+# skip test that requires images incorrectly flagged by AV
+{% set tests_to_skip = tests_to_skip + " or test_tiff_crashes" %}
 
 test:
   imports:
