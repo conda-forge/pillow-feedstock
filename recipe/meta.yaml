@@ -18,7 +18,7 @@ source:
     - patches/0004-Added-patch-to-fix-failing-Windows-test.patch
 
 build:
-  number: 1
+  number: 2
 
 requirements:
   build:
@@ -65,6 +65,8 @@ requirements:
 {% set tests_to_skip = tests_to_skip + " or test_embeddable" %}                 # [win]
 # the following needs a viewer which we don't have
 {% set tests_to_skip = tests_to_skip + " or (test_imageshow and test_show)" %}  # [linux]
+# skip test that requires an image incorrectly flagged by AV
+{% set tests_to_skip = tests_to_skip + " or test_tiff_crashes[Tests/images/crash-81154a65438ba5aaeca73fd502fa4850fbde60f8.tif]" %}
 
 test:
   imports:
