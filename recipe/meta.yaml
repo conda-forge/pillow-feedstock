@@ -16,9 +16,6 @@ source:
     - patches/0003-add-WEBP_ROOT-XCB_ROOT.patch
     # fix provided by upstream maintainer for failing test
     - patches/0004-Added-patch-to-fix-failing-Windows-test.patch
-    # Can be removed in the release after 9.1.1
-    # https://github.com/python-pillow/Pillow/pull/6339
-    - patches/6339_libtiff_4_4_0_compatibility.patch
 
 build:
   number: 0
