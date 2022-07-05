@@ -1,4 +1,4 @@
-{% set version = "9.1.1" %}
+{% set version = "9.2.0" %}
 
 package:
   name: pillow
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/python-pillow/Pillow/archive/refs/tags/{{ version }}.tar.gz
-  sha256: 4659341400e11b247654fe38bcb962207154fd0d1285987e7762fffe7c65abb0
+  sha256: 95836f00972dbf724bf1270178683a0ac4ea23c6c3a980858fc9f2f9456e32ef
   patches:
     - patches/0001-Build-without-USE_WIN32_FILEIO.patch
     # upstream CI has a quirk that needs extra quotes for py37/py38 on windows;
@@ -16,12 +16,9 @@ source:
     - patches/0003-add-WEBP_ROOT-XCB_ROOT.patch
     # fix provided by upstream maintainer for failing test
     - patches/0004-Added-patch-to-fix-failing-Windows-test.patch
-    # Can be removed in the release after 9.1.1
-    # https://github.com/python-pillow/Pillow/pull/6339
-    - patches/6339_libtiff_4_4_0_compatibility.patch
 
 build:
-  number: 1
+  number: 0
 
 requirements:
   build:
