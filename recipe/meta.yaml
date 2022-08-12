@@ -18,7 +18,7 @@ source:
     - patches/0004-Added-patch-to-fix-failing-Windows-test.patch
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
@@ -48,17 +48,6 @@ requirements:
     - zlib
   run:
     - python
-    - freetype
-    # - fribidi
-    - jpeg
-    - openjpeg
-    - lcms2
-    # - libimagequant  # [x86_64 and not win]
-    - libtiff
-    - libwebp
-    - libxcb
-    - tk
-    - zlib
 
 {% set tests_to_skip = "_not_a_real_test" %}
 # compile smoke test failing to link python3x.lib
