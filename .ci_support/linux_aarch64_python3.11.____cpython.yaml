@@ -3,7 +3,7 @@ BUILD:
 c_compiler:
 - gcc
 c_compiler_version:
-- '10'
+- '11'
 cdt_arch:
 - aarch64
 cdt_name:
@@ -19,7 +19,7 @@ freetype:
 jpeg:
 - '9'
 libtiff:
-- '4'
+- '4.5'
 libwebp:
 - '1'
 openjpeg:
