@@ -19,6 +19,9 @@ source:
 
 build:
   number: 4
+  skip: true  # [unix]
+  skip: true  # [py==38]
+  skip: true  # [py==311]
 
 requirements:
   build:
