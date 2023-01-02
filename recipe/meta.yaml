@@ -16,8 +16,8 @@ source:
     - patches/0003-add-WEBP_ROOT-XCB_ROOT.patch
     # fix provided by upstream maintainer for failing test
     - patches/0004-Added-patch-to-fix-failing-Windows-test.patch
-    # downgrade failing equality test to similarity
-    - patches/0005-downgrade-equality-check-to-similarity-for-test_file.patch
+    # backport https://github.com/python-pillow/Pillow/pull/6853
+    - patches/0005-Relaxed-child-images-check-to-allow-for-libjpeg.patch
 
 build:
   number: 0
