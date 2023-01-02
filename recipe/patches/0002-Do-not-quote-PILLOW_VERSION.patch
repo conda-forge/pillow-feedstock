@@ -1,17 +1,17 @@
-From 3ecfb3f876c8b35657549233657c37d8f5a5727e Mon Sep 17 00:00:00 2001
+From cb2cdb37fbe60a464e0afcd60616d2bf1840ed67 Mon Sep 17 00:00:00 2001
 From: Andrew Murray <radarhere@users.noreply.github.com>
 Date: Tue, 4 Jan 2022 13:54:46 +1100
-Subject: [PATCH 2/4] Do not quote PILLOW_VERSION
+Subject: [PATCH 2/5] Do not quote PILLOW_VERSION
 
 ---
  setup.py | 9 +--------
  1 file changed, 1 insertion(+), 8 deletions(-)
 
 diff --git a/setup.py b/setup.py
-index c0124e6b..87b73b02 100755
+index 7b8101e56..b8019024d 100755
 --- a/setup.py
 +++ b/setup.py
-@@ -834,14 +834,7 @@ class pil_build_ext(build_ext):
+@@ -838,14 +838,7 @@ class pil_build_ext(build_ext):
          if struct.unpack("h", b"\0\1")[0] == 1:
              defs.append(("WORDS_BIGENDIAN", None))
  
@@ -28,5 +28,5 @@ index c0124e6b..87b73b02 100755
          self._update_extension("PIL._imaging", libs, defs)
  
 -- 
-2.32.0.windows.2
+2.38.1.windows.1
 
