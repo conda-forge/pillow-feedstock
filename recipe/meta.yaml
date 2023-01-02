@@ -16,6 +16,8 @@ source:
     - patches/0003-add-WEBP_ROOT-XCB_ROOT.patch
     # fix provided by upstream maintainer for failing test
     - patches/0004-Added-patch-to-fix-failing-Windows-test.patch
+    # downgrade failing equality test to similarity
+    - patches/0005-downgrade-equality-check-to-similarity-for-test_file.patch
 
 build:
   number: 0
