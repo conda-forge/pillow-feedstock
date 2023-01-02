@@ -1,0 +1,26 @@
+From f9343cc87028379fa85597475da4b0ef2e915a15 Mon Sep 17 00:00:00 2001
+From: Andrew Murray <radarhere@users.noreply.github.com>
+Date: Wed, 30 Nov 2022 13:49:07 +1100
+Subject: [PATCH 5/5] Do not trust JPEG decoder to determine image is CMYK
+
+---
+ src/PIL/BlpImagePlugin.py | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/PIL/BlpImagePlugin.py b/src/PIL/BlpImagePlugin.py
+index 533997737..45987ec03 100644
+--- a/src/PIL/BlpImagePlugin.py
++++ b/src/PIL/BlpImagePlugin.py
+@@ -373,6 +373,9 @@ class BLP1Decoder(_BLPBaseDecoder):
+         data = BytesIO(data)
+         image = JpegImageFile(data)
+         Image._decompression_bomb_check(image.size)
++        if image.mode == "CMYK":
++            decoder_name, extents, offset, args = image.tile[0]
++            image.tile = [(decoder_name, extents, offset, (args[0], "CMYK"))]
+         r, g, b = image.convert("RGB").split()
+         image = Image.merge("RGB", (b, g, r))
+         self.set_as_raw(image.tobytes())
+-- 
+2.38.1.windows.1
+

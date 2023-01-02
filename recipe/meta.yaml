@@ -16,6 +16,8 @@ source:
     - patches/0003-add-WEBP_ROOT-XCB_ROOT.patch
     # fix provided by upstream maintainer for failing test
     - patches/0004-Added-patch-to-fix-failing-Windows-test.patch
+    # backport https://github.com/python-pillow/Pillow/pull/6767
+    - patches/0005-Do-not-trust-JPEG-decoder-to-determine-image-is-CMYK.patch
 
 build:
   number: 0

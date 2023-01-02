@@ -1,14 +1,14 @@
-From 809b8d59fc7fe7eda85125ad78c80f53a96e1331 Mon Sep 17 00:00:00 2001
+From e9a340c5c706f66a87f0ac6e275fcc4dd7f520c7 Mon Sep 17 00:00:00 2001
 From: "H. Vetinari" <h.vetinari@gmx.com>
 Date: Wed, 5 Jan 2022 18:51:42 +1100
-Subject: [PATCH 3/4] add WEBP_ROOT & XCB_ROOT
+Subject: [PATCH 3/5] add WEBP_ROOT & XCB_ROOT
 
 ---
  setup.py | 4 ++++
  1 file changed, 4 insertions(+)
 
 diff --git a/setup.py b/setup.py
-index 87b73b02..50e93e4d 100755
+index 133315cbf..8c52d2085 100755
 --- a/setup.py
 +++ b/setup.py
 @@ -35,6 +35,8 @@ JPEG2K_ROOT = None
@@ -20,7 +20,7 @@ index 87b73b02..50e93e4d 100755
  ZLIB_ROOT = None
  FUZZING_BUILD = "LIB_FUZZING_ENGINE" in os.environ
  
-@@ -445,6 +447,8 @@ class pil_build_ext(build_ext):
+@@ -451,6 +453,8 @@ class pil_build_ext(build_ext):
              HARFBUZZ_ROOT="harfbuzz",
              FRIBIDI_ROOT="fribidi",
              LCMS_ROOT="lcms2",
@@ -30,5 +30,5 @@ index 87b73b02..50e93e4d 100755
          ).items():
              root = globals()[root_name]
 -- 
-2.32.0.windows.2
+2.38.1.windows.1
 
