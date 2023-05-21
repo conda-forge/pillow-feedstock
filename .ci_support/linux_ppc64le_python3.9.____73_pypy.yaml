@@ -1,7 +1,7 @@
 c_compiler:
 - gcc
 c_compiler_version:
-- '11'
+- '12'
 cdt_name:
 - cos7
 channel_sources:
@@ -18,6 +18,8 @@ libtiff:
 - '4.5'
 libwebp:
 - '1'
+libxcb:
+- '1.15'
 openjpeg:
 - '2'
 pin_run_as_build:
