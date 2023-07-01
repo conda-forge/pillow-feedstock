@@ -1,0 +1,24 @@
+From 998ebf0087c84e7769b51d9d9f01b84dba9a333e Mon Sep 17 00:00:00 2001
+From: Andrew Murray <radarhere@users.noreply.github.com>
+Date: Wed, 12 Jan 2022 11:35:32 +1100
+Subject: [PATCH 2/3] Added patch to fix failing Windows test
+
+---
+ src/PIL/TiffImagePlugin.py | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/PIL/TiffImagePlugin.py b/src/PIL/TiffImagePlugin.py
+index d51488285..d928737a2 100644
+--- a/src/PIL/TiffImagePlugin.py
++++ b/src/PIL/TiffImagePlugin.py
+@@ -1253,6 +1253,10 @@ class TiffImageFile(ImageFile.ImageFile):
+         # To be nice on memory footprint, if there's a
+         # file descriptor, use that instead of reading
+         # into a string in python.
++        position = self.fp.tell()
++        self.fp.seek(0)
++        fp = io.BytesIO(self.fp.read())
++        self.fp.seek(position)
+         try:
+             fp = hasattr(self.fp, "fileno") and self.fp.fileno()
+             # flush the file descriptor, prevents error on pypy 2.4+
