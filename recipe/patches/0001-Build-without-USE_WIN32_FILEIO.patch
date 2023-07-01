@@ -1,7 +1,7 @@
-From 6ad681a1d328bf898093e0c6c8a5a107b58be491 Mon Sep 17 00:00:00 2001
+From dee50ab96fd0739a2352e8574c6b54dbc886db45 Mon Sep 17 00:00:00 2001
 From: Ryan May <rmay@ucar.edu>
 Date: Wed, 5 May 2021 12:42:10 -0600
-Subject: [PATCH 1/5] Build without USE_WIN32_FILEIO
+Subject: [PATCH 1/3] Build without USE_WIN32_FILEIO
 
 This keeps things consistent with current conda-forge builds of tiff
 (and poppler).
@@ -10,10 +10,10 @@ This keeps things consistent with current conda-forge builds of tiff
  1 file changed, 6 deletions(-)
 
 diff --git a/setup.py b/setup.py
-index 243365681..7b8101e56 100755
+index 024634ad8..49826a4a1 100755
 --- a/setup.py
 +++ b/setup.py
-@@ -830,12 +830,6 @@ class pil_build_ext(build_ext):
+@@ -833,12 +833,6 @@ class pil_build_ext(build_ext):
          if feature.tiff:
              libs.append(feature.tiff)
              defs.append(("HAVE_LIBTIFF", None))
@@ -26,6 +26,3 @@ index 243365681..7b8101e56 100755
          if feature.xcb:
              libs.append(feature.xcb)
              defs.append(("HAVE_XCB", None))
--- 
-2.38.1.windows.1
-
