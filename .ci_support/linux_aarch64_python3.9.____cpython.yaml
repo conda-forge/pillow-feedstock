@@ -19,7 +19,7 @@ freetype:
 libjpeg_turbo:
 - 2.1.5
 libtiff:
-- '4.5'
+- '4.6'
 libwebp:
 - '1'
 libxcb:
