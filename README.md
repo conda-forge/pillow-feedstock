@@ -5,7 +5,7 @@ Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/pillow-feedstoc
 
 Home: https://pillow.readthedocs.io
 
-Package license: LicenseRef-PIL
+Package license: HPND
 
 Summary: Pillow is the friendly PIL fork by Alex Clark and Contributors
 

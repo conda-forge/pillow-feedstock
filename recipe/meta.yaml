@@ -15,7 +15,7 @@ source:
     - patches/0003-add-WEBP_ROOT-XCB_ROOT.patch
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
@@ -85,7 +85,7 @@ test:
 
 about:
   home: https://pillow.readthedocs.io
-  license: LicenseRef-PIL
+  license: HPND
   license_file: LICENSE
   summary: Pillow is the friendly PIL fork by Alex Clark and Contributors
   dev_url: https://github.com/python-pillow/Pillow/
