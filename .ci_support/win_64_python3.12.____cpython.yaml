@@ -1,7 +1,7 @@
 c_compiler:
 - vs2019
 channel_sources:
-- conda-forge/label/python_rc,conda-forge
+- conda-forge
 channel_targets:
 - conda-forge main
 freetype:
@@ -26,8 +26,5 @@ target_platform:
 - win-64
 tk:
 - '8.6'
-zip_keys:
-- - python
-  - channel_sources
 zlib:
 - '1.2'
