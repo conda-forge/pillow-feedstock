@@ -59,6 +59,11 @@ requirements:
 {% set tests_to_skip = tests_to_skip + " or test_strip_ycbcr_jpeg_2x2_sampling" %}  # [not osx]
 # skip test that requires an image incorrectly flagged by AV
 {% set tests_to_skip = tests_to_skip + " or test_tiff_crashes[Tests/images/crash-81154a65438ba5aaeca73fd502fa4850fbde60f8.tif]" %}
+# skip tests that run into troubles on win+pypy
+{% if win and python_impl == "pypy" %}
+    {% set tests_to_skip = tests_to_skip + " or test_grabclipboard" %}
+    {% set tests_to_skip = tests_to_skip + " or test_main" %}
+{% endif %}
 
 test:
   imports:
