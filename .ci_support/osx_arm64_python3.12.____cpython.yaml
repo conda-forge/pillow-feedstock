@@ -3,9 +3,9 @@ MACOSX_DEPLOYMENT_TARGET:
 c_compiler:
 - clang
 c_compiler_version:
-- '15'
+- '16'
 channel_sources:
-- conda-forge/label/python_rc,conda-forge
+- conda-forge
 channel_targets:
 - conda-forge main
 freetype:
@@ -28,12 +28,14 @@ pin_run_as_build:
     max_pin: x.x
 python:
 - 3.12.* *_cpython
+python_impl:
+- cpython
 target_platform:
 - osx-arm64
 tk:
 - '8.6'
 zip_keys:
 - - python
-  - channel_sources
+  - python_impl
 zlib:
 - '1.2'
