@@ -79,7 +79,7 @@ test:
     - aiohttp
     - requests
   commands:
-    - pytest -v -k "not ({{ tests_to_skip }})"
+    - pytest -k "not ({{ tests_to_skip }})" --durations=50
 
 about:
   home: https://pillow.readthedocs.io
