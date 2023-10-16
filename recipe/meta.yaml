@@ -76,8 +76,7 @@ test:
     - {{ compiler('c') }}
     # for run_test.py
     - fsspec
-    # remove selector as soon as available on python 3.12
-    - aiohttp  # [py<312]
+    - aiohttp
     - requests
   commands:
     - pytest -v -k "not ({{ tests_to_skip }})"  # [not ppc64le]
