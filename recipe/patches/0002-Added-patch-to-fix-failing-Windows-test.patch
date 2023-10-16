@@ -1,7 +1,7 @@
 From ec13430817ed51edd4b3aa47eda299a674e24e39 Mon Sep 17 00:00:00 2001
 From: Andrew Murray <radarhere@users.noreply.github.com>
 Date: Wed, 12 Jan 2022 11:35:32 +1100
-Subject: [PATCH 2/3] Added patch to fix failing Windows test
+Subject: [PATCH 2/4] Added patch to fix failing Windows test
 
 ---
  src/PIL/TiffImagePlugin.py | 4 ++++

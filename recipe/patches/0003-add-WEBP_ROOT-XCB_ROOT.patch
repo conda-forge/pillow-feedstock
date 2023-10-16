@@ -1,7 +1,7 @@
 From 9a3f00b271f816a5f76e86607def484d2ccab6f0 Mon Sep 17 00:00:00 2001
 From: "H. Vetinari" <h.vetinari@gmx.com>
 Date: Wed, 5 Jan 2022 18:51:42 +1100
-Subject: [PATCH 3/3] add WEBP_ROOT & XCB_ROOT
+Subject: [PATCH 3/4] add WEBP_ROOT & XCB_ROOT
 
 ---
  setup.py | 4 ++++
