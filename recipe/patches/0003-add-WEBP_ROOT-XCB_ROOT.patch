@@ -1,4 +1,4 @@
-From 9a3f00b271f816a5f76e86607def484d2ccab6f0 Mon Sep 17 00:00:00 2001
+From aa98449c7c85f78f4654d1d652e0bf3e3be38ee1 Mon Sep 17 00:00:00 2001
 From: "H. Vetinari" <h.vetinari@gmx.com>
 Date: Wed, 5 Jan 2022 18:51:42 +1100
 Subject: [PATCH 3/4] add WEBP_ROOT & XCB_ROOT
@@ -8,10 +8,10 @@ Subject: [PATCH 3/4] add WEBP_ROOT & XCB_ROOT
  1 file changed, 4 insertions(+)
 
 diff --git a/setup.py b/setup.py
-index a96cf163c..6675b7f4b 100755
+index 91afaebc3..69e69c3e4 100755
 --- a/setup.py
 +++ b/setup.py
-@@ -36,6 +36,8 @@ JPEG2K_ROOT = None
+@@ -37,6 +37,8 @@ JPEG2K_ROOT = None
  JPEG_ROOT = None
  LCMS_ROOT = None
  TIFF_ROOT = None
@@ -20,12 +20,12 @@ index a96cf163c..6675b7f4b 100755
  ZLIB_ROOT = None
  FUZZING_BUILD = "LIB_FUZZING_ENGINE" in os.environ
  
-@@ -449,6 +451,8 @@ class pil_build_ext(build_ext):
-             HARFBUZZ_ROOT="harfbuzz",
-             FRIBIDI_ROOT="fribidi",
-             LCMS_ROOT="lcms2",
-+            WEBP_ROOT="webp",
-+            XCB_ROOT="xcb",
-             IMAGEQUANT_ROOT="libimagequant",
-         ).items():
+@@ -450,6 +452,8 @@ class pil_build_ext(build_ext):
+             "HARFBUZZ_ROOT": "harfbuzz",
+             "FRIBIDI_ROOT": "fribidi",
+             "LCMS_ROOT": "lcms2",
++            "WEBP_ROOT": "webp",
++            "XCB_ROOT": "xcb",
+             "IMAGEQUANT_ROOT": "libimagequant",
+         }.items():
              root = globals()[root_name]
