@@ -1,4 +1,4 @@
-From 8c24e35106aa5a0609a84e0f7852da5f9dcef6a2 Mon Sep 17 00:00:00 2001
+From a60b279e0b3fe1d3e1d694b0e66d0a41b9fd4c20 Mon Sep 17 00:00:00 2001
 From: "H. Vetinari" <h.vetinari@gmx.com>
 Date: Mon, 16 Oct 2023 11:34:34 +1100
 Subject: [PATCH 4/4] Revert "Skip tests that require FreeType if FreeType is
@@ -12,10 +12,10 @@ This reverts commit 472eb666833f97e5d44364a1e80dec355623451e.
  3 files changed, 5 deletions(-)
 
 diff --git a/Tests/oss-fuzz/test_fuzzers.py b/Tests/oss-fuzz/test_fuzzers.py
-index 0526f550e..dc111c38b 100644
+index 68834045a..f54cb5069 100644
 --- a/Tests/oss-fuzz/test_fuzzers.py
 +++ b/Tests/oss-fuzz/test_fuzzers.py
-@@ -6,7 +6,6 @@ import packaging
+@@ -7,7 +7,6 @@ import packaging
  import pytest
  
  from PIL import Image, features
@@ -23,7 +23,7 @@ index 0526f550e..dc111c38b 100644
  
  if sys.platform.startswith("win32"):
      pytest.skip("Fuzzer is linux only", allow_module_level=True)
-@@ -49,7 +48,6 @@ def test_fuzz_images(path):
+@@ -50,7 +49,6 @@ def test_fuzz_images(path):
          fuzzers.disable_decompressionbomb_error()
  
  
@@ -32,10 +32,10 @@ index 0526f550e..dc111c38b 100644
      "path", subprocess.check_output("find Tests/fonts -type f", shell=True).split(b"\n")
  )
 diff --git a/Tests/test_imagedraw.py b/Tests/test_imagedraw.py
-index 4052c41ff..f30cc9893 100644
+index 379fe78cd..d3b3b3050 100644
 --- a/Tests/test_imagedraw.py
 +++ b/Tests/test_imagedraw.py
-@@ -1339,7 +1339,6 @@ def test_stroke_multiline():
+@@ -1340,7 +1340,6 @@ def test_stroke_multiline():
      assert_image_similar_tofile(im, "Tests/images/imagedraw_stroke_multiline.png", 3.3)
  
  
@@ -44,10 +44,10 @@ index 4052c41ff..f30cc9893 100644
      # Arrange
      im = Image.new("RGB", (100, 250))
 diff --git a/Tests/test_pickle.py b/Tests/test_pickle.py
-index 1c5d482bd..531936f8f 100644
+index eb687b57b..7fa07a9fb 100644
 --- a/Tests/test_pickle.py
 +++ b/Tests/test_pickle.py
-@@ -112,7 +112,6 @@ def helper_assert_pickled_font_images(font1, font2):
+@@ -113,7 +113,6 @@ def helper_assert_pickled_font_images(font1, font2):
      assert_image_equal(im1, im2)
  
  
@@ -55,7 +55,7 @@ index 1c5d482bd..531936f8f 100644
  @pytest.mark.parametrize("protocol", list(range(0, pickle.HIGHEST_PROTOCOL + 1)))
  def test_pickle_font_string(protocol):
      # Arrange
-@@ -126,7 +125,6 @@ def test_pickle_font_string(protocol):
+@@ -127,7 +126,6 @@ def test_pickle_font_string(protocol):
      helper_assert_pickled_font_images(font, unpickled_font)
  
  
