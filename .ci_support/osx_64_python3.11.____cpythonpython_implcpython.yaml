@@ -4,11 +4,17 @@ c_compiler:
 - clang
 c_compiler_version:
 - '16'
+c_stdlib:
+- macosx_deployment_target
+c_stdlib_version:
+- '10.9'
 channel_sources:
 - conda-forge
 channel_targets:
 - conda-forge main
 freetype:
+- '2'
+lcms2:
 - '2'
 libjpeg_turbo:
 - '3'

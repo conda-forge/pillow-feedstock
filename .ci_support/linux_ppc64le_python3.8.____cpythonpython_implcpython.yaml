@@ -2,6 +2,10 @@ c_compiler:
 - gcc
 c_compiler_version:
 - '12'
+c_stdlib:
+- sysroot
+c_stdlib_version:
+- '2.17'
 cdt_name:
 - cos7
 channel_sources:
@@ -11,6 +15,8 @@ channel_targets:
 docker_image:
 - quay.io/condaforge/linux-anvil-ppc64le
 freetype:
+- '2'
+lcms2:
 - '2'
 libjpeg_turbo:
 - '3'
@@ -33,6 +39,8 @@ python_impl:
 target_platform:
 - linux-ppc64le
 zip_keys:
+- - c_stdlib_version
+  - cdt_name
 - - python
   - python_impl
 zlib:
