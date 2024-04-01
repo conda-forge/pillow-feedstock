@@ -13,12 +13,10 @@ source:
     - patches/0002-Added-patch-to-fix-failing-Windows-test.patch
     # windows needs help detecting webpmux & xcb
     - patches/0003-add-WEBP_ROOT-XCB_ROOT.patch
-    # revert a commit because it breaks windows;
-    # https://github.com/python-pillow/Pillow/commit/472eb666833f97e5d44364a1e80dec355623451e
-    - patches/0004-Revert-Skip-tests-that-require-FreeType-if-FreeType-.patch  # [win]
 
 build:
   number: 0
+  skip: true  # [py<38]
 
 requirements:
   build:
