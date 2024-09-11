@@ -16,7 +16,7 @@ source:
     - patches/0004-work-around-case-sensitivity.patch  # [win]
 
 build:
-  number: 0
+  number: 1
   skip: true  # [py<38]
 
 requirements:
