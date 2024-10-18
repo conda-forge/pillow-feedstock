@@ -84,7 +84,6 @@ test:
     - {{ compiler('c') }}
     # for run_test.py
     - fsspec
-    - aiohttp
     - requests
   commands:
     - pytest -k "not ({{ tests_to_skip }})" --durations=50
