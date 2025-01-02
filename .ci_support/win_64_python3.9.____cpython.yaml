@@ -8,8 +8,6 @@ channel_targets:
 - conda-forge main
 freetype:
 - '2'
-jpeg:
-- '9'
 lcms2:
 - '2'
 libjpeg_turbo:
