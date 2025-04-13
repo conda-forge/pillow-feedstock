@@ -13,7 +13,6 @@ source:
     - patches/0002-Added-patch-to-fix-failing-Windows-test.patch
     # windows needs help detecting webpmux & xcb
     - patches/0003-add-XCB_ROOT.patch
-    - patches/0004-work-around-case-sensitivity.patch  # [win]
 
 build:
   number: 0
