@@ -1,4 +1,4 @@
-From 5190cd5f1d0e38be9b7d427ee8d438e02f0b37e1 Mon Sep 17 00:00:00 2001
+From 9dc98275ca7e26eb70c9b75434ac5add7bf79fdd Mon Sep 17 00:00:00 2001
 From: Andrew Murray <radarhere@users.noreply.github.com>
 Date: Wed, 12 Jan 2022 11:35:32 +1100
 Subject: [PATCH 2/4] Added patch to fix failing Windows test
@@ -8,10 +8,10 @@ Subject: [PATCH 2/4] Added patch to fix failing Windows test
  1 file changed, 4 insertions(+)
 
 diff --git a/src/PIL/TiffImagePlugin.py b/src/PIL/TiffImagePlugin.py
-index ac5b63c1b..6ace84271 100644
+index 61eb15243..39e564704 100644
 --- a/src/PIL/TiffImagePlugin.py
 +++ b/src/PIL/TiffImagePlugin.py
-@@ -1278,6 +1278,10 @@ class TiffImageFile(ImageFile.ImageFile):
+@@ -1335,6 +1335,10 @@ class TiffImageFile(ImageFile.ImageFile):
          # To be nice on memory footprint, if there's a
          # file descriptor, use that instead of reading
          # into a string in python.

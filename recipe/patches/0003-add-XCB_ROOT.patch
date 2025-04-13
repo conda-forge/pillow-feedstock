@@ -1,4 +1,4 @@
-From 334086a4a37d3b76620513a210a20ab8fcff19f7 Mon Sep 17 00:00:00 2001
+From ddc83bd592c74d45f2a697f468c858fb1b8b8472 Mon Sep 17 00:00:00 2001
 From: "H. Vetinari" <h.vetinari@gmx.com>
 Date: Wed, 5 Jan 2022 18:51:42 +1100
 Subject: [PATCH 3/4] add XCB_ROOT
@@ -8,10 +8,10 @@ Subject: [PATCH 3/4] add XCB_ROOT
  1 file changed, 2 insertions(+)
 
 diff --git a/setup.py b/setup.py
-index 49f620ceb..5a5952719 100644
+index 12f56bd68..1cfd26c09 100644
 --- a/setup.py
 +++ b/setup.py
-@@ -40,6 +40,7 @@ LCMS_ROOT = None
+@@ -42,6 +42,7 @@ LCMS_ROOT = None
  RAQM_ROOT = None
  TIFF_ROOT = None
  WEBP_ROOT = None
@@ -19,7 +19,7 @@ index 49f620ceb..5a5952719 100644
  ZLIB_ROOT = None
  FUZZING_BUILD = "LIB_FUZZING_ENGINE" in os.environ
  
-@@ -464,6 +465,7 @@ class pil_build_ext(build_ext):
+@@ -490,6 +491,7 @@ class pil_build_ext(build_ext):
              "RAQM_ROOT": "raqm",
              "WEBP_ROOT": "libwebp",
              "LCMS_ROOT": "lcms2",
