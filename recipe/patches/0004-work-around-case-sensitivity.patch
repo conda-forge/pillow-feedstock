@@ -1,4 +1,4 @@
-From b07f419e423d43960e939b0ee19961533c6a0527 Mon Sep 17 00:00:00 2001
+From b11da905124811b08fe0335f0708e89d32373fdb Mon Sep 17 00:00:00 2001
 From: Filipe Fernandes <ocefpaf@gmail.com>
 Date: Wed, 3 Apr 2024 14:29:31 +0200
 Subject: [PATCH 4/4] work around case-sensitivity
@@ -8,13 +8,13 @@ Subject: [PATCH 4/4] work around case-sensitivity
  1 file changed, 4 insertions(+), 1 deletion(-)
 
 diff --git a/Tests/oss-fuzz/test_fuzzers.py b/Tests/oss-fuzz/test_fuzzers.py
-index 90eb8713a..d38e9d9e4 100644
+index e42ec90aa..704ae22a1 100644
 --- a/Tests/oss-fuzz/test_fuzzers.py
 +++ b/Tests/oss-fuzz/test_fuzzers.py
 @@ -8,7 +8,10 @@ import packaging
  import pytest
  
- from PIL import Image, UnidentifiedImageError, features
+ from PIL import Image, features
 -from Tests.helper import skip_unless_feature
 +if sys.platform.startswith("win32"):
 +    from tests.helper import skip_unless_feature
