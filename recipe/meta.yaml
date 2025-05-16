@@ -15,15 +15,14 @@ source:
     - patches/0003-add-XCB_ROOT.patch
 
 build:
-  number: 0
-  skip: true  # [py<38]
+  number: 1
 
 requirements:
   build:
     - python                                 # [build_platform != target_platform]
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - {{ compiler('c') }}
-    - {{ stdlib("c") }}
+    - {{ stdlib('c') }}
   host:
     - python
     - pip
@@ -42,7 +41,7 @@ requirements:
     # - libimagequant  # [x86_64 and not win]
     - libtiff
     - libwebp
-    - libxcb
+    - libxcb   # [unix]
     - tk
     - zlib
   run:
