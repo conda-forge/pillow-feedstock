@@ -42,9 +42,5 @@ target_platform:
 - osx-arm64
 tk:
 - '8.6'
-zip_keys:
-- - python
-  - python_impl
-  - channel_sources
 zlib:
 - '1'
