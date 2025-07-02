@@ -87,7 +87,7 @@ test:
     - fsspec
     - requests
   commands:
-    - pytest -k "not ({{ tests_to_skip }})" --durations=50
+    - pytest -vv --tb=long --color=yes -k "not ({{ tests_to_skip }})" --durations=50
 
 about:
   home: https://pillow.readthedocs.io
