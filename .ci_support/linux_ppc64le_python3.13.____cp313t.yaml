@@ -9,7 +9,7 @@ c_stdlib_version:
 cdt_name:
 - conda
 channel_sources:
-- conda-forge/label/cython_dev,conda-forge
+- conda-forge
 channel_targets:
 - conda-forge main
 docker_image:
@@ -38,9 +38,5 @@ python_impl:
 - cpython
 target_platform:
 - linux-ppc64le
-zip_keys:
-- - python
-  - python_impl
-  - channel_sources
 zlib:
 - '1'
