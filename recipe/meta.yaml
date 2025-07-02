@@ -65,10 +65,6 @@ requirements:
     {% set tests_to_skip = tests_to_skip + " or test_grabclipboard" %}
     {% set tests_to_skip = tests_to_skip + " or test_main" %}
 {% endif %}
-# #165: hard fail with no feedback on windows
-{% if win %}
-    {% set tests_to_skip = tests_to_skip + " or test_save_zero" %}
-{% endif %}
 
 test:
   imports:
