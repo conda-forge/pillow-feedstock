@@ -1,12 +1,13 @@
 diff --git a/setup.py b/setup.py
-index 477d187..3d48281 100644
+index 477d187..2d812c7 100644
 --- a/setup.py
 +++ b/setup.py
-@@ -901,7 +901,7 @@ class pil_build_ext(build_ext):
+@@ -901,7 +901,8 @@ class pil_build_ext(build_ext):
                  # when compiling LibTIFF. LibTIFF doesn't expose it in `tiffconf.h`,
                  # so we have to guess; by default it is defined in all Windows builds.
                  # See #4237, #5243, #5359 for more information.
 -                defs.append(("USE_WIN32_FILEIO", None))
++                # defs.append(("USE_WIN32_FILEIO", None))
 +                pass
              elif sys.platform == "ios":
                  # Ensure transitive dependencies are linked.
