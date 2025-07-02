@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/python-pillow/Pillow/archive/refs/tags/{{ version }}.tar.gz
-  sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  sha256: fa4aca745b1e1c733589ebf0ef19491b145dd4225c4aa06958963b4e7f0734cf
   patches:
     - patches/0001-Build-without-USE_WIN32_FILEIO.patch
     # fix provided by upstream maintainer for failing test
