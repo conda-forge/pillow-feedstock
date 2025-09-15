@@ -28,7 +28,7 @@ requirements:
     - pip
     - setuptools >=77
     # libraries, c.f. https://github.com/python-pillow/Pillow/blob/9.0.0/setup.py#L30-L38
-    - freetype
+    - freetype >=2,<2.14.0dev0
     # fribidi and libimagequant disabled due to
     # GPL discussion, see #109 and #111
     # - fribidi
