@@ -54,6 +54,7 @@ outputs:
         - zlib
       run:
         - python
+        - freetype >=2,<2.14.0dev0
     test:
       imports:
         - PIL
