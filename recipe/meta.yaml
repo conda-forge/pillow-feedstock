@@ -36,7 +36,7 @@ outputs:
         - pip
         - setuptools >=77
         # libraries, c.f. https://github.com/python-pillow/Pillow/blob/9.0.0/setup.py#L30-L38
-        - freetype >=2,<2.14.0dev0
+        - freetype
         # fribidi and libimagequant disabled due to
         # GPL discussion, see #109 and #111
         # - fribidi
@@ -54,7 +54,7 @@ outputs:
         - zlib
       run:
         - python
-        - freetype >=2,<2.14.0dev0
+        - freetype
     test:
       imports:
         - PIL
@@ -94,6 +94,10 @@ outputs:
       {% set tests_to_skip = tests_to_skip + " or test_tiff_mmap" %}
       # #165: hard fail with no feedback on windows
       {% set tests_to_skip = tests_to_skip + " or test_save_zero" %}  # [win]
+      # Freetype 2.14 broke some tests https://github.com/python-pillow/Pillow/issues/9205
+      # should be fixed in 2.14.1, and maybe some tests need updating in pillow itself
+      # FUTURE: skip for now but readd in pillow 11.4.0 or so
+      {% set tests_to_skip = tests_to_skip + " test_default_font_size or test_variation_set_by_axes or test_colr or test_colr_mask or test_default_font" %}
       commands:
         - pytest -vv --tb=long --color=yes -k "not ({{ tests_to_skip }})" --durations=50
 
