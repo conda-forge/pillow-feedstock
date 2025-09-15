@@ -97,7 +97,7 @@ outputs:
       # Freetype 2.14 broke some tests https://github.com/python-pillow/Pillow/issues/9205
       # should be fixed in 2.14.1, and maybe some tests need updating in pillow itself
       # FUTURE: skip for now but readd in pillow 11.4.0 or so
-      {% set tests_to_skip = tests_to_skip + " test_default_font_size or test_variation_set_by_axes or test_colr or test_colr_mask or test_default_font" %}
+      {% set tests_to_skip = tests_to_skip + " or test_default_font_size or test_variation_set_by_axes or test_colr or test_colr_mask or test_default_font" %}
       commands:
         - pytest -vv --tb=long --color=yes -k "not ({{ tests_to_skip }})" --durations=50
 
