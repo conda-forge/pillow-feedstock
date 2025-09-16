@@ -294,6 +294,7 @@ Current release info
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-pillow-green.svg)](https://anaconda.org/conda-forge/pillow) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/pillow.svg)](https://anaconda.org/conda-forge/pillow) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/pillow.svg)](https://anaconda.org/conda-forge/pillow) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/pillow.svg)](https://anaconda.org/conda-forge/pillow) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-pillow--tests-green.svg)](https://anaconda.org/conda-forge/pillow-tests) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/pillow-tests.svg)](https://anaconda.org/conda-forge/pillow-tests) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/pillow-tests.svg)](https://anaconda.org/conda-forge/pillow-tests) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/pillow-tests.svg)](https://anaconda.org/conda-forge/pillow-tests) |
 
 Installing pillow
 =================
@@ -305,16 +306,16 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `pillow` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `pillow, pillow-tests` can be installed with `conda`:
 
 ```
-conda install pillow
+conda install pillow pillow-tests
 ```
 
 or with `mamba`:
 
 ```
-mamba install pillow
+mamba install pillow pillow-tests
 ```
 
 It is possible to list all of the versions of `pillow` available on your platform with `conda`:
