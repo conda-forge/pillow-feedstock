@@ -1,11 +1,23 @@
 c_compiler:
-- vs2022
+- gcc
+c_compiler_version:
+- '14'
 c_stdlib:
-- vs
+- sysroot
+c_stdlib_version:
+- '2.17'
+cdt_name:
+- conda
 channel_sources:
+- conda-forge
+- conda-forge
+- conda-forge
+- conda-forge
 - conda-forge
 channel_targets:
 - conda-forge main
+docker_image:
+- quay.io/condaforge/linux-anvil-ppc64le:alma9
 freetype:
 - '2'
 lcms2:
@@ -25,11 +37,13 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 python:
+- 3.10.* *_cpython
+- 3.11.* *_cpython
+- 3.12.* *_cpython
+- 3.13.* *_cp313
 - 3.13.* *_cp313t
 target_platform:
-- win-64
-tk:
-- '8.6'
+- linux-ppc64le
 zip_keys:
 - - python
   - channel_sources
