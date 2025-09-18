@@ -5,7 +5,7 @@ set LIBRARY_DIRS=%LIBRARY_BIN%;%LIBRARY_LIB%
 set JPEG_ROOT=%LIBRARY_PREFIX%
 set JPEG2K_ROOT=%LIBRARY_PREFIX%
 set ZLIB_ROOT=%LIBRARY_PREFIX%
-:: currently disabled, see meta.yaml
+:: currently disabled, see recipe.yaml
 :: set IMAGEQUANT_ROOT=%LIBRARY_PREFIX%
 set TIFF_ROOT=%LIBRARY_PREFIX%
 set FREETYPE_ROOT=%LIBRARY_PREFIX%

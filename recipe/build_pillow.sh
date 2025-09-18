@@ -3,7 +3,7 @@
 export JPEG_ROOT=$PREFIX
 export JPEG2K_ROOT=$PREFIX
 export ZLIB_ROOT=$PREFIX
-# currently disabled, see meta.yaml
+# currently disabled, see recipe.yaml
 # export IMAGEQUANT_ROOT=$PREFIX
 export TIFF_ROOT=$PREFIX
 export FREETYPE_ROOT=$PREFIX
