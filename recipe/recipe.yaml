@@ -1,15 +1,14 @@
 schema_version: 1
 
 context:
-  version: "11.3.0"
-      
+  version: "12.0.0"
 recipe:
   name: pillow-split
   version: ${{ version }}
 
 source:
   url: https://github.com/python-pillow/Pillow/archive/refs/tags/${{ version }}.tar.gz
-  sha256: fa4aca745b1e1c733589ebf0ef19491b145dd4225c4aa06958963b4e7f0734cf
+  sha256: 02ff6557600f93c7b4d8f6b059eba586e900ee7dd90715ed216412b97d481023
   patches:
     - patches/0001-Build-without-USE_WIN32_FILEIO.patch
     # fix provided by upstream maintainer for failing test
@@ -18,22 +17,22 @@ source:
     - patches/0003-add-XCB_ROOT.patch
 
 build:
-  number: 3
+  number: 0
 
 outputs:
   - package:
       name: pillow
     build:
-      script: 
+      script:
         - if: unix
           then: build_pillow.sh
           else: build_pillow.bat
     requirements:
       build:
         - if: build_platform != target_platform
-          then: python
-        - if: build_platform != target_platform
-          then: cross-python_${{ target_platform }}
+          then:
+            - python
+            - cross-python_${{ target_platform }}
         - ${{ compiler('c') }}
         - ${{ stdlib("c") }}
       host:
@@ -95,7 +94,7 @@ outputs:
             - import sys, pytest
             - 'tests_to_skip = ["_not_a_real_test"]'
             - if: win
-              then: 
+              then:
                 # compile smoke test failing to link python3x.lib
                 - 'tests_to_skip.append("test_embeddable")'
                 # #165: hard fail with no feedback on windows
