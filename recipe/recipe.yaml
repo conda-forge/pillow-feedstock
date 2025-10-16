@@ -37,6 +37,7 @@ outputs:
         - ${{ stdlib("c") }}
       host:
         - python
+        - pybind11
         - pip
         - setuptools >=77
         # libraries, c.f. https://github.com/python-pillow/Pillow/blob/9.0.0/setup.py#L30-L38
