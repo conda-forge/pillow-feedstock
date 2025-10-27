@@ -1,0 +1,282 @@
+From 8c3715bdba0941a1073e92d2193867b0093698f1 Mon Sep 17 00:00:00 2001
+From: Mark Harfouche <mark.harfouche@gmail.com>
+Date: Mon, 27 Oct 2025 16:49:17 -0400
+Subject: [PATCH] Provide a clear option to depend on zlib-ng
+
+---
+ setup.py                   | 13 ++++++++++---
+ src/_imaging.c             |  6 ++++--
+ src/libImaging/ZipCodecs.h | 10 +++++++++-
+ src/libImaging/ZipDecode.c | 24 ++++++++++++++++++++++++
+ src/libImaging/ZipEncode.c | 36 ++++++++++++++++++++++++++++++++++++
+ 5 files changed, 83 insertions(+), 6 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index 3a72a0742..726d33aab 100644
+--- a/setup.py
++++ b/setup.py
+@@ -725,7 +725,12 @@ class pil_build_ext(build_ext):
+ 
+         if feature.want("zlib"):
+             _dbg("Looking for zlib")
+-            if _find_include_file(self, "zlib.h"):
++            if _find_include_file(self, "zlib-ng.h"):
++                if _find_library_file(self, "z-ng"):
++                    feature.set("zlib", "z-ng")
++                elif sys.platform == "win32" and _find_library_file(self, "zlib-ng"):
++                    feature.set("zlib", "zlib-ng")
++            elif _find_include_file(self, "zlib.h"):
+                 if _find_library_file(self, "z"):
+                     feature.set("zlib", "z")
+                 elif sys.platform == "win32" and _find_library_file(self, "zlib"):
+@@ -923,9 +928,11 @@ class pil_build_ext(build_ext):
+             defs.append(("HAVE_OPENJPEG", None))
+             if sys.platform == "win32" and not PLATFORM_MINGW:
+                 defs.append(("OPJ_STATIC", None))
+-        if feature.get("zlib"):
+-            libs.append(feature.get("zlib"))
++        if zlib := feature.get("zlib"):
++            libs.append(zlib)
+             defs.append(("HAVE_LIBZ", None))
++            if zlib in ["z-ng", "zlib-ng"]:
++                defs.append(("HAVE_ZLIBNG", None))
+         if feature.get("imagequant"):
+             libs.append(feature.get("imagequant"))
+             defs.append(("HAVE_LIBIMAGEQUANT", None))
+diff --git a/src/_imaging.c b/src/_imaging.c
+index 41af72568..a38f31ad8 100644
+--- a/src/_imaging.c
++++ b/src/_imaging.c
+@@ -85,8 +85,10 @@
+ #endif
+ #endif
+ 
+-#ifdef HAVE_LIBZ
+-#include "zlib.h"
++#ifdef HAVE_ZLIBNG
++#include <zlib-ng.h>
++#else
++#include <zlib.h>
+ #endif
+ 
+ #ifdef HAVE_LIBTIFF
+diff --git a/src/libImaging/ZipCodecs.h b/src/libImaging/ZipCodecs.h
+index 50218b6c6..95606501e 100644
+--- a/src/libImaging/ZipCodecs.h
++++ b/src/libImaging/ZipCodecs.h
+@@ -7,7 +7,11 @@
+  * Copyright (c) Fredrik Lundh 1996.
+  */
+ 
+-#include "zlib.h"
++#ifdef HAVE_ZLIBNG
++#include <zlib-ng.h>
++#else
++#include <zlib.h>
++#endif
+ 
+ /* modes */
+ #define ZIP_PNG 0            /* continuous, filtered image data */
+@@ -35,7 +39,11 @@ typedef struct {
+ 
+     /* PRIVATE CONTEXT (set by decoder/encoder) */
+ 
++#ifdef HAVE_ZLIBNG
++    zng_stream z_stream; /* (de)compression stream */
++#else
+     z_stream z_stream; /* (de)compression stream */
++#endif
+ 
+     UINT8 *previous; /* previous line (allocated) */
+ 
+diff --git a/src/libImaging/ZipDecode.c b/src/libImaging/ZipDecode.c
+index d964ff2ca..9b0161fbf 100644
+--- a/src/libImaging/ZipDecode.c
++++ b/src/libImaging/ZipDecode.c
+@@ -80,7 +80,11 @@ ImagingZipDecode(Imaging im, ImagingCodecState state, UINT8 *buf, Py_ssize_t byt
+         context->z_stream.zfree = (free_func)NULL;
+         context->z_stream.opaque = (voidpf)NULL;
+ 
++#ifdef HAVE_ZLIBNG
++        err = zng_inflateInit(&context->z_stream);
++#else
+         err = inflateInit(&context->z_stream);
++#endif
+         if (err < 0) {
+             state->errcode = IMAGING_CODEC_CONFIG;
+             free(context->previous);
+@@ -112,7 +116,11 @@ ImagingZipDecode(Imaging im, ImagingCodecState state, UINT8 *buf, Py_ssize_t byt
+         context->z_stream.next_out = state->buffer + context->last_output;
+         context->z_stream.avail_out = row_len + context->prefix - context->last_output;
+ 
++#ifdef HAVE_ZLIBNG
++        err = zng_inflate(&context->z_stream, Z_NO_FLUSH);
++#else
+         err = inflate(&context->z_stream, Z_NO_FLUSH);
++#endif
+ 
+         if (err < 0) {
+             /* Something went wrong inside the compression library */
+@@ -125,7 +133,11 @@ ImagingZipDecode(Imaging im, ImagingCodecState state, UINT8 *buf, Py_ssize_t byt
+             }
+             free(context->previous);
+             context->previous = NULL;
++#ifdef HAVE_ZLIBNG
++            zng_inflateEnd(&context->z_stream);
++#else
+             inflateEnd(&context->z_stream);
++#endif
+             return -1;
+         }
+ 
+@@ -196,7 +208,11 @@ ImagingZipDecode(Imaging im, ImagingCodecState state, UINT8 *buf, Py_ssize_t byt
+                         state->errcode = IMAGING_CODEC_UNKNOWN;
+                         free(context->previous);
+                         context->previous = NULL;
++#ifdef HAVE_ZLIBNG
++                        zng_inflateEnd(&context->z_stream);
++#else
+                         inflateEnd(&context->z_stream);
++#endif
+                         return -1;
+                 }
+                 break;
+@@ -270,7 +286,11 @@ ImagingZipDecode(Imaging im, ImagingCodecState state, UINT8 *buf, Py_ssize_t byt
+ 
+             free(context->previous);
+             context->previous = NULL;
++#ifdef HAVE_ZLIBNG
++            zng_inflateEnd(&context->z_stream);
++#else
+             inflateEnd(&context->z_stream);
++#endif
+             return -1; /* end of file (errcode=0) */
+         }
+ 
+@@ -292,7 +312,11 @@ ImagingZipDecodeCleanup(ImagingCodecState state) {
+ 
+     /* Clean up */
+     if (context->previous) {
++#ifdef HAVE_ZLIBNG
++        zng_inflateEnd(&context->z_stream);
++#else
+         inflateEnd(&context->z_stream);
++#endif
+         free(context->previous);
+         context->previous = NULL;
+     }
+diff --git a/src/libImaging/ZipEncode.c b/src/libImaging/ZipEncode.c
+index 44f2629cc..0242f7b87 100644
+--- a/src/libImaging/ZipEncode.c
++++ b/src/libImaging/ZipEncode.c
+@@ -88,7 +88,11 @@ ImagingZipEncode(Imaging im, ImagingCodecState state, UINT8 *buf, int bytes) {
+             compress_type = context->compress_type;
+         }
+ 
++#ifdef HAVE_ZLIBNG
++        err = zng_deflateInit2(
++#else
+         err = deflateInit2(
++#endif
+             &context->z_stream,
+             /* compression level */
+             compress_level,
+@@ -106,7 +110,11 @@ ImagingZipEncode(Imaging im, ImagingCodecState state, UINT8 *buf, int bytes) {
+         }
+ 
+         if (context->dictionary && context->dictionary_size > 0) {
++#ifdef HAVE_ZLIBNG
++            err = zng_deflateSetDictionary(
++#else
+             err = deflateSetDictionary(
++#endif
+                 &context->z_stream,
+                 (unsigned char *)context->dictionary,
+                 context->dictionary_size
+@@ -126,7 +134,11 @@ ImagingZipEncode(Imaging im, ImagingCodecState state, UINT8 *buf, int bytes) {
+     context->z_stream.avail_out = bytes;
+     if (context->z_stream.next_in && context->z_stream.avail_in > 0) {
+         /* We have some data from previous round, deflate it first */
++#ifdef HAVE_ZLIBNG
++        err = zng_deflate(&context->z_stream, Z_NO_FLUSH);
++#else
+         err = deflate(&context->z_stream, Z_NO_FLUSH);
++#endif
+ 
+         if (err < 0) {
+             /* Something went wrong inside the compression library */
+@@ -142,7 +154,11 @@ ImagingZipEncode(Imaging im, ImagingCodecState state, UINT8 *buf, int bytes) {
+             free(context->up);
+             free(context->prior);
+             free(context->previous);
++#ifdef HAVE_ZLIBNG
++            zng_deflateEnd(&context->z_stream);
++#else
+             deflateEnd(&context->z_stream);
++#endif
+             return -1;
+         }
+     }
+@@ -279,7 +295,11 @@ ImagingZipEncode(Imaging im, ImagingCodecState state, UINT8 *buf, int bytes) {
+                     context->z_stream.next_in = context->output;
+                     context->z_stream.avail_in = state->bytes + 1;
+ 
++#ifdef HAVE_ZLIBNG
++                    err = zng_deflate(&context->z_stream, Z_NO_FLUSH);
++#else
+                     err = deflate(&context->z_stream, Z_NO_FLUSH);
++#endif
+ 
+                     if (err < 0) {
+                         /* Something went wrong inside the compression library */
+@@ -295,7 +315,11 @@ ImagingZipEncode(Imaging im, ImagingCodecState state, UINT8 *buf, int bytes) {
+                         free(context->up);
+                         free(context->prior);
+                         free(context->previous);
++#ifdef HAVE_ZLIBNG
++                        zng_deflateEnd(&context->z_stream);
++#else
+                         deflateEnd(&context->z_stream);
++#endif
+                         ImagingSectionLeave(&cookie);
+                         return -1;
+                     }
+@@ -315,7 +339,11 @@ ImagingZipEncode(Imaging im, ImagingCodecState state, UINT8 *buf, int bytes) {
+                 /* End of image data; flush compressor buffers */
+ 
+                 while (context->z_stream.avail_out > 0) {
++#ifdef HAVE_ZLIBNG
++                    err = zng_deflate(&context->z_stream, Z_FINISH);
++#else
+                     err = deflate(&context->z_stream, Z_FINISH);
++#endif
+ 
+                     if (err == Z_STREAM_END) {
+                         free(context->paeth);
+@@ -324,7 +352,11 @@ ImagingZipEncode(Imaging im, ImagingCodecState state, UINT8 *buf, int bytes) {
+                         free(context->prior);
+                         free(context->previous);
+ 
++#ifdef HAVE_ZLIBNG
++                        zng_deflateEnd(&context->z_stream);
++#else
+                         deflateEnd(&context->z_stream);
++#endif
+ 
+                         state->errcode = IMAGING_CODEC_END;
+ 
+@@ -364,7 +396,11 @@ ImagingZipEncodeCleanup(ImagingCodecState state) {
+ 
+ const char *
+ ImagingZipVersion(void) {
++#ifdef HAVE_ZLIBNG
++    return zlibng_version();
++#else
+     return zlibVersion();
++#endif
+ }
+ 
+ #endif
+-- 
+2.51.0
+

@@ -15,6 +15,8 @@ source:
     - patches/0002-Added-patch-to-fix-failing-Windows-test.patch
     # windows needs help detecting webpmux & xcb
     - patches/0003-add-XCB_ROOT.patch
+    # zlib-ng without full conda-forge-wide deployment
+    - patches/0001-Provide-a-clear-option-to-depend-on-zlib-ng.patch
 
 build:
   number: 0
@@ -56,7 +58,7 @@ outputs:
         - libwebp
         - libxcb
         - tk
-        - zlib
+        - zlib-ng
       run:
         - python
     tests:
