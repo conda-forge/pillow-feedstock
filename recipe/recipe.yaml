@@ -1,43 +1,45 @@
 schema_version: 1
 
 context:
-  version: "11.3.0"
-      
+  version: "12.0.0"
 recipe:
   name: pillow-split
   version: ${{ version }}
 
 source:
   url: https://github.com/python-pillow/Pillow/archive/refs/tags/${{ version }}.tar.gz
-  sha256: fa4aca745b1e1c733589ebf0ef19491b145dd4225c4aa06958963b4e7f0734cf
+  sha256: 9d24d8c1197610e63eee5e5cfa60025e4aaaba3f5c3c592e9a62cdf734f0bb13
   patches:
     - patches/0001-Build-without-USE_WIN32_FILEIO.patch
     # fix provided by upstream maintainer for failing test
     - patches/0002-Added-patch-to-fix-failing-Windows-test.patch
     # windows needs help detecting webpmux & xcb
     - patches/0003-add-XCB_ROOT.patch
+    # zlib-ng without full conda-forge-wide deployment
+    - patches/0001-Provide-a-clear-option-to-depend-on-zlib-ng.patch
 
 build:
-  number: 3
+  number: 0
 
 outputs:
   - package:
       name: pillow
     build:
-      script: 
+      script:
         - if: unix
           then: build_pillow.sh
           else: build_pillow.bat
     requirements:
       build:
         - if: build_platform != target_platform
-          then: python
-        - if: build_platform != target_platform
-          then: cross-python_${{ target_platform }}
+          then:
+            - python
+            - cross-python_${{ target_platform }}
         - ${{ compiler('c') }}
         - ${{ stdlib("c") }}
       host:
         - python
+        - pybind11
         - pip
         - setuptools >=77
         # libraries, c.f. https://github.com/python-pillow/Pillow/blob/9.0.0/setup.py#L30-L38
@@ -56,7 +58,7 @@ outputs:
         - libwebp
         - libxcb
         - tk
-        - zlib
+        - zlib-ng
       run:
         - python
     tests:
@@ -95,7 +97,7 @@ outputs:
             - import sys, pytest
             - 'tests_to_skip = ["_not_a_real_test"]'
             - if: win
-              then: 
+              then:
                 # compile smoke test failing to link python3x.lib
                 - 'tests_to_skip.append("test_embeddable")'
                 # #165: hard fail with no feedback on windows
