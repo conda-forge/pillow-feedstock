@@ -37,4 +37,4 @@ target_platform:
 tk:
 - '8.6'
 zlib_ng:
-- '2.2'
+- '2.3'
