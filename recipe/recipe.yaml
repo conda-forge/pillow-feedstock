@@ -1,14 +1,14 @@
 schema_version: 1
 
 context:
-  version: "12.0.0"
+  version: "12.1.0"
 recipe:
   name: pillow-split
   version: ${{ version }}
 
 source:
   url: https://github.com/python-pillow/Pillow/archive/refs/tags/${{ version }}.tar.gz
-  sha256: 9d24d8c1197610e63eee5e5cfa60025e4aaaba3f5c3c592e9a62cdf734f0bb13
+  sha256: 8160e8b97c9e12337073b91d427d88df9490ba500f21d32015cfbb6f98846670
   patches:
     - patches/0001-Build-without-USE_WIN32_FILEIO.patch
     # fix provided by upstream maintainer for failing test
@@ -19,7 +19,7 @@ source:
     - patches/0001-Provide-a-clear-option-to-depend-on-zlib-ng.patch
 
 build:
-  number: 2
+  number: 0
 
 outputs:
   - package:
