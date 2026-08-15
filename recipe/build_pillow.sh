@@ -1,5 +1,6 @@
 #!/bin/bash
 
+export AVIF_ROOT=$PREFIX
 export JPEG_ROOT=$PREFIX
 export JPEG2K_ROOT=$PREFIX
 export ZLIB_ROOT=$PREFIX
@@ -15,6 +16,9 @@ export XCB_ROOT=$PREFIX
 # add --vendor-raqm to installation (cannot be passed through pip install)
 echo "[build_ext]" >> setup.cfg
 echo "vendor-raqm=1" >> setup.cfg
+# make avif a required feature, so that the build fails rather than silently
+# producing a pillow without AVIF support
+echo "enable_avif=1" >> setup.cfg
 # sanity check
 cat setup.cfg
 
