@@ -19,7 +19,7 @@ source:
     - patches/0001-Provide-a-clear-option-to-depend-on-zlib-ng.patch
 
 build:
-  number: 0
+  number: 1
 
 outputs:
   - package:
@@ -43,6 +43,7 @@ outputs:
         - pip
         - setuptools >=77
         # libraries, c.f. https://github.com/python-pillow/Pillow/blob/9.0.0/setup.py#L30-L38
+        - libavif
         - freetype
         # fribidi and libimagequant disabled due to
         # GPL discussion, see #109 and #111
@@ -67,6 +68,7 @@ outputs:
             - PIL
             - PIL.Image
             - PIL.ImageCms
+            - PIL._avif
 
   - package:
       name: pillow-tests
@@ -106,6 +108,10 @@ outputs:
               then:
                 # the following needs a viewer which we don't have
                 - 'tests_to_skip.append("(test_imageshow and test_show)")'
+            - if: target_platform == "linux-aarch64" or target_platform == "linux-ppc64le"
+              then:
+                # hard-coded 4s timeout upstream, which the emulated CI runners miss
+                - 'tests_to_skip.append("(test_imagefontpil and test_oom)")'
             - if: not osx
               then:
                 # this test is a known failure with libjpeg_turbo, but only marked as such for 2.0 upstream, not 2.x, see

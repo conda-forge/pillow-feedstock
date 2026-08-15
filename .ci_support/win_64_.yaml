@@ -10,6 +10,8 @@ freetype:
 - '2'
 lcms2:
 - '2'
+libavif:
+- '1'
 libjpeg_turbo:
 - '3'
 libtiff:

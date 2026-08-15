@@ -2,6 +2,7 @@ set LIB=%LIBRARY_LIB%;%LIB%
 set INCLUDE=%LIBRARY_INC%;%INCLUDE%
 set LIBRARY_DIRS=%LIBRARY_BIN%;%LIBRARY_LIB%
 
+set AVIF_ROOT=%LIBRARY_PREFIX%
 set JPEG_ROOT=%LIBRARY_PREFIX%
 set JPEG2K_ROOT=%LIBRARY_PREFIX%
 set ZLIB_ROOT=%LIBRARY_PREFIX%
@@ -18,6 +19,9 @@ set XCB_ROOT=%LIBRARY_PREFIX%
 :: add --vendor-raqm to installation (cannot be passed through pip install)
 echo [build_ext] >> setup.cfg
 echo vendor-raqm=1 >> setup.cfg
+:: make avif a required feature, so that the build fails rather than silently
+:: producing a pillow without AVIF support
+echo enable_avif=1 >> setup.cfg
 :: sanity check
 type setup.cfg
 
