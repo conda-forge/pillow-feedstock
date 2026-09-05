@@ -19,7 +19,7 @@ source:
     - patches/0001-Provide-a-clear-option-to-depend-on-zlib-ng.patch
 
 build:
-  number: 1
+  number: 2
 
 outputs:
   - package:
