@@ -20,6 +20,10 @@ source:
 
 build:
   number: 2
+  variant:
+    # we don't want separate jobs if the newest python is in release candidate phase
+    ignore_keys:
+      - channel_sources
 
 outputs:
   - package:
