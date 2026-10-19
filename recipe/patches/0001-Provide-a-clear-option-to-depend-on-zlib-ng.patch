@@ -5,17 +5,17 @@ Subject: [PATCH] Provide a clear option to depend on zlib-ng
 
 ---
  setup.py                   | 13 ++++++++++---
- src/_imaging.c             |  6 ++++--
- src/libImaging/ZipCodecs.h | 10 +++++++++-
+ src/_imaging.c             |  4 +++-
+ src/libImaging/ZipCodecs.h |  8 ++++++++
  src/libImaging/ZipDecode.c | 24 ++++++++++++++++++++++++
  src/libImaging/ZipEncode.c | 36 ++++++++++++++++++++++++++++++++++++
- 5 files changed, 83 insertions(+), 6 deletions(-)
+ 5 files changed, 81 insertions(+), 4 deletions(-)
 
 diff --git a/setup.py b/setup.py
-index 3a72a0742..726d33aab 100644
+index 164a06f..c8eae0a 100644
 --- a/setup.py
 +++ b/setup.py
-@@ -725,7 +725,12 @@ class pil_build_ext(build_ext):
+@@ -732,7 +732,12 @@ class pil_build_ext(build_ext):
  
          if feature.want("zlib"):
              _dbg("Looking for zlib")
@@ -29,7 +29,7 @@ index 3a72a0742..726d33aab 100644
                  if _find_library_file(self, "z"):
                      feature.set("zlib", "z")
                  elif sys.platform == "win32" and _find_library_file(self, "zlib"):
-@@ -923,9 +928,11 @@ class pil_build_ext(build_ext):
+@@ -929,9 +934,11 @@ class pil_build_ext(build_ext):
              defs.append(("HAVE_OPENJPEG", None))
              if sys.platform == "win32" and not PLATFORM_MINGW:
                  defs.append(("OPJ_STATIC", None))
@@ -44,35 +44,32 @@ index 3a72a0742..726d33aab 100644
              libs.append(feature.get("imagequant"))
              defs.append(("HAVE_LIBIMAGEQUANT", None))
 diff --git a/src/_imaging.c b/src/_imaging.c
-index 41af72568..a38f31ad8 100644
+index 6557649..02f4b26 100644
 --- a/src/_imaging.c
 +++ b/src/_imaging.c
-@@ -85,8 +85,10 @@
+@@ -86,7 +86,9 @@
  #endif
  #endif
  
 -#ifdef HAVE_LIBZ
--#include "zlib.h"
 +#ifdef HAVE_ZLIBNG
 +#include <zlib-ng.h>
 +#else
-+#include <zlib.h>
+ #include <zlib.h>
  #endif
  
- #ifdef HAVE_LIBTIFF
 diff --git a/src/libImaging/ZipCodecs.h b/src/libImaging/ZipCodecs.h
-index 50218b6c6..95606501e 100644
+index 42f1a71..9560650 100644
 --- a/src/libImaging/ZipCodecs.h
 +++ b/src/libImaging/ZipCodecs.h
 @@ -7,7 +7,11 @@
   * Copyright (c) Fredrik Lundh 1996.
   */
  
--#include "zlib.h"
 +#ifdef HAVE_ZLIBNG
 +#include <zlib-ng.h>
 +#else
-+#include <zlib.h>
+ #include <zlib.h>
 +#endif
  
  /* modes */
@@ -90,7 +87,7 @@ index 50218b6c6..95606501e 100644
      UINT8 *previous; /* previous line (allocated) */
  
 diff --git a/src/libImaging/ZipDecode.c b/src/libImaging/ZipDecode.c
-index d964ff2ca..9b0161fbf 100644
+index f5fab43..a028110 100644
 --- a/src/libImaging/ZipDecode.c
 +++ b/src/libImaging/ZipDecode.c
 @@ -80,7 +80,11 @@ ImagingZipDecode(Imaging im, ImagingCodecState state, UINT8 *buf, Py_ssize_t byt
@@ -166,7 +163,7 @@ index d964ff2ca..9b0161fbf 100644
          context->previous = NULL;
      }
 diff --git a/src/libImaging/ZipEncode.c b/src/libImaging/ZipEncode.c
-index 44f2629cc..0242f7b87 100644
+index efe76d1..24437a1 100644
 --- a/src/libImaging/ZipEncode.c
 +++ b/src/libImaging/ZipEncode.c
 @@ -88,7 +88,11 @@ ImagingZipEncode(Imaging im, ImagingCodecState state, UINT8 *buf, int bytes) {
@@ -265,7 +262,7 @@ index 44f2629cc..0242f7b87 100644
  
                          state->errcode = IMAGING_CODEC_END;
  
-@@ -364,7 +396,11 @@ ImagingZipEncodeCleanup(ImagingCodecState state) {
+@@ -362,7 +394,11 @@ ImagingZipEncodeCleanup(ImagingCodecState state) {
  
  const char *
  ImagingZipVersion(void) {
